@@ -1,9 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-export const connectDB = async () => {
+dotenv.config();
+
+const username = process.env.DBuser;
+const password = process.env.password;
+
+export const connectDB = async () => {    
   await mongoose
     .connect(
-      'mongodb+srv://tomato-admin:1035653510@cluster0.tfnzdg1.mongodb.net/tomato'
+      `mongodb+srv://${username}:${password}@cluster0.tfnzdg1.mongodb.net/tomato`
     )
     .then(() => console.log("DB connected!"));
 };
