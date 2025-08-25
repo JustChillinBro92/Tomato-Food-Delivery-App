@@ -2,7 +2,6 @@ import foodModel from "../models/foodModels.js";
 import fs from "fs";
 
 // add food item
-
 const addFood = async (req, res) => {
     let image_filename = `${req.file.filename}`;
 
@@ -21,4 +20,33 @@ const addFood = async (req, res) => {
     }
 }
 
-export {addFood};
+// list all food items
+const listFood = async (req, res) => {
+    try {
+        const foods = await foodModel.find({});
+        res.json({success: true, data: foods});
+    } catch (error) {
+        res.json({success: false, message: "Error"});
+    }
+}
+
+// remove food item
+const removeFood = async (req, res) => {
+    try {
+        const food = await foodModel.findById(req.body.id);
+
+        // remove from uploads folder
+        fs.unlink(`uploads/${food.image}`, (err) => {
+            if(err) throw err;
+            console.log(`uploads/${food.image} was deleted!`);
+        })
+        
+        // remove from mongoDB
+        await foodModel.findByIdAndDelete(req.body.id);
+        res.json({success: true, message: "Food Deleted"})
+    } catch (error) {
+        res.json({success: false, message: "Error"});
+    }
+}
+
+export {addFood, listFood, removeFood};
