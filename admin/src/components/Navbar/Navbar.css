@@ -1,0 +1,27 @@
+.navbar-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4%;
+}
+
+.admin-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 2px solid black;
+  border-radius: 1rem;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.profile-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.05s ease-in;
+}
