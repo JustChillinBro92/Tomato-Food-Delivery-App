@@ -37,6 +37,11 @@
   transform: scale(1.1);
 }
 
+.sidebar-option.active {
+  background-color: #fff0ed;
+  border-color: tomato;
+}
+
 /* Responsive font scaling */
 @media (max-width: 1324px) {
   .sidebar-option {
