@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios"
+import { toast } from "react-toastify";
 
 import { assets } from "../../assets/assets";
 
@@ -10,7 +11,7 @@ const Add = () => {
   const [data, setData] = useState({
     name: "",
     description: "",
-    category: "",
+    category: "Salad",
     price: "",
   })
 
@@ -22,10 +23,9 @@ const Add = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    const backend_url = "http://localhost:4000";
 
-    const backend_url = " http://localhost:4000" 
     const formData = new FormData();
-
     formData.append("name", data.name);
     formData.append("description", data.description);
     formData.append("category", data.category);
@@ -33,22 +33,23 @@ const Add = () => {
     formData.append("image", image);
     
     const response = await axios.post(`${backend_url}/api/food/add`, formData);
-    if(response.data.success) {
-        console.log("Data sent to backend successfully!");      
+    if(response.data.success) {     
         setData({
             name: "",
             description: "",
-            category: "",
+            category: "Salad",
             price: "",          
         });
         setImage(false);
+        toast.success(response.data.message)
     } else {
-
+      toast.error(response.data.message)
     }
   }
 
   return (
     <div className="add">
+      <h3>ADD FOOD ITEM</h3>
       <form className="flex-col" onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>

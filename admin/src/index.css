@@ -7,9 +7,16 @@
   font-family: Outfit;
 }
 
+
 body{
   min-height: 100vh;
   background-color: #fcfcfc;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  /* overflow-x: hidden; */
 }
 
 a {
@@ -26,4 +33,10 @@ hr {
 .app-content {
   display: flex;
   height: 100vh;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -14,9 +14,9 @@ const addFood = async (req, res) => {
     })
     try {
         await food.save();
-        res.json({success: true, message: "Food Added"});
+        res.json({success: true, message: "Food Added Successfully!"});
     } catch (error) {
-        res.json({success: false, message: "Error"});
+        res.json({success: false, message: "Error! Something went wrong"});
     }
 }
 
@@ -26,7 +26,7 @@ const listFood = async (req, res) => {
         const foods = await foodModel.find({});
         res.json({success: true, data: foods});
     } catch (error) {
-        res.json({success: false, message: "Error"});
+        res.json({success: false, message: "Error! Something went wrong"});
     }
 }
 
@@ -43,9 +43,9 @@ const removeFood = async (req, res) => {
         
         // remove from mongoDB
         await foodModel.findByIdAndDelete(req.body.id);
-        res.json({success: true, message: "Food Deleted"})
+        res.json({success: true, message: "Food Deleted Succesfully"})
     } catch (error) {
-        res.json({success: false, message: "Error"});
+        res.json({success: false, message: "Error! Something went wrong"});
     }
 }
 

@@ -1,0 +1,73 @@
+.add {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2rem;
+
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.add form {
+    gap: 20px;
+    padding: 2.5rem 3rem 1.5rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.add-img-upload {
+    max-width: 120px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.add-img-upload img{
+    width: 120px;
+    cursor: pointer;
+}
+
+.add-img-upload img:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in;
+}
+
+.add-product-name, .add-product-description {
+    width: max(40%, 250px);
+}
+
+.add-product-name input, .add-product-description textarea {
+    padding: 10px;
+}
+
+.add-category-price {
+    display: flex;
+    max-width: 250px;
+    gap: 30px
+}
+
+.add-category select, .add-product-price input {
+    padding: 10px;
+    max-width: 120px;
+}
+
+.add-btn {
+    padding: 10px;
+    max-width: 120px;
+
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in;
+}
+
+@media (min-width: 464px) {
+    .add {
+        width: 100%;
+    }
+}
