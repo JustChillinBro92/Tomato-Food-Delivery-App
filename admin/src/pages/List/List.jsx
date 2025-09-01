@@ -7,9 +7,8 @@ import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import './List.css'
 import { toast } from 'react-toastify'
 
-const List = () => {
+const List = ({backend_url}) => {
   const [list, setList] = useState([]);
-  const backend_url = "http://localhost:4000";
 
   const fetchList = async () => {
     const response = await axios.get(`${backend_url}/api/food/list`);

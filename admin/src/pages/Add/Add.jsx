@@ -6,7 +6,7 @@ import { assets } from "../../assets/assets";
 
 import "./Add.css";
 
-const Add = () => {
+const Add = ({backend_url}) => {
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -23,7 +23,6 @@ const Add = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    const backend_url = "http://localhost:4000";
 
     const formData = new FormData();
     formData.append("name", data.name);
