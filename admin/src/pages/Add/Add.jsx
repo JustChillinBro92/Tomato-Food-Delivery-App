@@ -3,7 +3,6 @@ import axios from "axios"
 import { toast } from "react-toastify";
 
 import { assets } from "../../assets/assets";
-
 import "./Add.css";
 
 const Add = ({backend_url}) => {

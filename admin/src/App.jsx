@@ -13,19 +13,19 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const App = () => {
-  const url = "http://localhost:4000";
+  const url = 'http://localhost:4000';
 
   return (
     <div className='app'>
       <Navbar/>
       <hr />
-      <div className="app-content">
+      <div className='app-content'>
         <Sidebar/>
         <ToastContainer/>
         <Routes>
-          <Route path="/add" element={<Add backend_url={url}/>}/>
-          <Route path="/list" element={<List backend_url={url}/>}/>
-          <Route path="/orders" element={<Orders backend_url={url}/>}/>
+          <Route path='/add' element={<Add backend_url={url}/>}/>
+          <Route path='/list' element={<List backend_url={url}/>}/>
+          <Route path='/orders' element={<Orders backend_url={url}/>}/>
         </Routes>
       </div>
     </div>

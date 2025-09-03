@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import { toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 
 import './List.css'
-import { toast } from 'react-toastify'
 
 const List = ({backend_url}) => {
   const [list, setList] = useState([]);
