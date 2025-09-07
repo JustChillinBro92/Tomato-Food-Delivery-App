@@ -6,14 +6,14 @@
 }
 
 .header-contents {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 40%;
+    width: 50%;
     gap: 1.5rem;
-    bottom: 20%;
-    left: 17vw;
+    bottom: -10vw;
+    left: 6vw;
     animation: fadeIn 2s;
 }
 
