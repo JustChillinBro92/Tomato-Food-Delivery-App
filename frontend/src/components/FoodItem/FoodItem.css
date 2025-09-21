@@ -9,12 +9,38 @@
 }
 
 .food-item:hover {
-    scale: 1.04;
+    transform: translateY(-3px);
 }
 
 .food-item-img {
-    width: 260px;
+    width: 280px;
     border-radius: 15px 15px 0px 0px;
+}
+
+.add-to-cart, .food-item-counter-container {
+    position: relative;
+    background-color: rgb(232, 232, 232);
+    box-shadow: 5px 7px 10px #0000002d;
+    text-align: center;
+    color: rgb(11, 153, 11);
+    font-weight: 600;
+    border-radius: 0.2rem;
+    padding: 10px;
+    width: 110px;
+    margin: -25px 15px 0 auto;
+    transition: 0.3s;
+}
+
+.add-to-cart p {
+    animation: fadeIn 1s;
+}
+
+.food-item-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    animation: fadeIn 1s;
 }
 
 .food-item-info {
@@ -23,7 +49,7 @@
 
 .food-item-restaurant {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 480;
     margin-bottom: 6px;
     color: #191919;
 }
@@ -37,7 +63,7 @@
 
 .food-item-name-rating p {
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 450;
     color: #303030;
 }
 

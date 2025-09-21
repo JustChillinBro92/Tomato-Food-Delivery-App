@@ -1,16 +1,29 @@
 import { useContext } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
 import './FoodItem.css'
 
-const FoodItem = ({id, image, name, description, price, restaurant_id}) => {    
-  const {restaurant_list} = useContext(StoreContext);
+const FoodItem = ({item_id, image, name, description, price, restaurant_id}) => {    
+  const {restaurant_list, cartItems, addToCart, removeFromCart} = useContext(StoreContext);
 
   return (
     <div className='food-item' id='food-item'>
         <div className='food-item-img-container'>
             <img className='food-item-img' src={image} alt="" />
+                {
+                    !cartItems.items[item_id] ?
+                    <div className='add-to-cart' onClick={()=> addToCart(restaurant_id, item_id)}><p>ADD</p></div> : 
+                    <div className='food-item-counter-container'>
+                        <div className='food-item-counter'>
+                            <FontAwesomeIcon icon={faMinus} onClick={()=> removeFromCart(item_id)}/>
+                            {cartItems.items[item_id]}
+                            <FontAwesomeIcon icon={faPlus} onClick={()=> addToCart(restaurant_id, item_id)}/>
+                        </div>
+                    </div>
+                }
         </div>
 
 

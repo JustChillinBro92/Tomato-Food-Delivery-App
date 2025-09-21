@@ -11,16 +11,18 @@ const FoodDisplay = ({category}) => {
     <div className='food-display' id='food-display'>
         <h2>Top Dishes Near You</h2>
         <div className='food-display-list'>
-            {food_list.map((item, index) => {                
-                return <FoodItem 
+            {food_list.map((item, index) => { 
+                if(category === 'All' || category === item.category) {
+                  return <FoodItem 
                     key={index}
-                    id={item._id} 
+                    item_id={item._id} 
                     image={item.image}
                     name={item.name} 
                     description={item.description}
                     price={item.price}
                     restaurant_id={item.restaurantId}
-                />
+                  />
+                }     
             })}
         </div>
     </div>

@@ -1,7 +1,6 @@
-import { React, useState }from 'react'
+import { useState }from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 import {assets} from '../../assets/assets.js'
 import './Navbar.css'
