@@ -31,6 +31,10 @@
     transition: 0.3s;
 }
 
+.add-to-cart:hover {
+    transform: translateX(-2px);
+}
+
 .add-to-cart p {
     animation: fadeIn 1s;
 }
@@ -41,6 +45,14 @@
     align-items: center;
     gap: 20px;
     animation: fadeIn 1s;
+}
+
+.cart-operation-icon {
+    transition: 0.2s;
+}
+
+.food-item-counter .cart-operation-icon:hover {
+    transform: scale(1.2);
 }
 
 .food-item-info {

@@ -18,14 +18,13 @@ const FoodItem = ({item_id, image, name, description, price, restaurant_id}) => 
                     <div className='add-to-cart' onClick={()=> addToCart(restaurant_id, item_id)}><p>ADD</p></div> : 
                     <div className='food-item-counter-container'>
                         <div className='food-item-counter'>
-                            <FontAwesomeIcon icon={faMinus} onClick={()=> removeFromCart(item_id)}/>
+                            <FontAwesomeIcon icon={faMinus} className='cart-operation-icon' onClick={()=> removeFromCart(item_id)}/>
                             {cartItems.items[item_id]}
-                            <FontAwesomeIcon icon={faPlus} onClick={()=> addToCart(restaurant_id, item_id)}/>
+                            <FontAwesomeIcon icon={faPlus} className='cart-operation-icon' onClick={()=> addToCart(restaurant_id, item_id)}/>
                         </div>
                     </div>
                 }
         </div>
-
 
         <div className='food-item-info'>
             <p className='food-item-restaurant'>
