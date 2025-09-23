@@ -27,7 +27,11 @@
     gap: 20px;
 }
 
-.footer-content-left li, .footer-content-center li, .footer-content-right li {
+.footer-content-left p {
+    width: 88%;
+}
+
+.footer-content-center li, .footer-content-right li {
     list-style: none;
     margin-bottom: 10px;
     cursor: pointer;

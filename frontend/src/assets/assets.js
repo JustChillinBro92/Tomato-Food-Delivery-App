@@ -46,6 +46,19 @@ import food_30 from "./food_30.png";
 import food_31 from "./food_31.png";
 import food_32 from "./food_32.png";
 
+import greenleaf from "./greenleaf.png";
+import healthybites from "./healthybites.png";
+import spicehub from "./spicehub.png";
+import urbantandoor from "./urbantandoor.png";
+import pastapalace from "./pastapalace.png";
+import sweettreats from "./sweettreats.png";
+import noodlenation from "./noodlenation.png";
+import burgerbarn from "./burgerbarn.png";
+import sushihouse from "./sushihouse.png";
+import tacofiesta from "./tacofiesta.png";
+import mediterraneo from "./mediterraneo.png";
+import thesteakhouse from "./thesteakhouse.png";
+
 import add_icon_white from "./add_icon_white.png";
 import add_icon_green from "./add_icon_green.png";
 import remove_icon_red from "./remove_icon_red.png";
@@ -93,6 +106,7 @@ export const restaurant_list = [
     location: "Downtown",
     rating: 4.5,
     cuisine: "Healthy / Organic",
+    image: greenleaf,
   },
   {
     restaurantId: "r2",
@@ -100,6 +114,7 @@ export const restaurant_list = [
     location: "Uptown",
     rating: 4.2,
     cuisine: "Vegetarian",
+    image: healthybites,
   },
   {
     restaurantId: "r3",
@@ -107,6 +122,7 @@ export const restaurant_list = [
     location: "City Center",
     rating: 4.7,
     cuisine: "Indian / Fast Food",
+    image: spicehub,
   },
   {
     restaurantId: "r4",
@@ -114,6 +130,7 @@ export const restaurant_list = [
     location: "West Side",
     rating: 4.3,
     cuisine: "Indian Fusion",
+    image: urbantandoor,
   },
   {
     restaurantId: "r5",
@@ -121,6 +138,7 @@ export const restaurant_list = [
     location: "East End",
     rating: 4.6,
     cuisine: "Italian",
+    image: pastapalace,
   },
   {
     restaurantId: "r6",
@@ -128,6 +146,7 @@ export const restaurant_list = [
     location: "Midtown",
     rating: 4.4,
     cuisine: "Bakery & Desserts",
+    image: sweettreats,
   },
   {
     restaurantId: "r7",
@@ -135,6 +154,47 @@ export const restaurant_list = [
     location: "South Market",
     rating: 4.1,
     cuisine: "Asian / Chinese",
+    image: noodlenation,
+  },
+  {
+    restaurantId: "r8",
+    name: "Burger Barn",
+    location: "Harbor Street",
+    rating: 4.3,
+    cuisine: "American / Fast Food",
+    image: burgerbarn,
+  },
+  {
+    restaurantId: "r9",
+    name: "Sushi House",
+    location: "Riverside",
+    rating: 4.6,
+    cuisine: "Japanese",
+    image: sushihouse,
+  },
+  {
+    restaurantId: "r10",
+    name: "Taco Fiesta",
+    location: "Old Town",
+    rating: 4.2,
+    cuisine: "Mexican",
+    image: tacofiesta,
+  },
+  {
+    restaurantId: "r11",
+    name: "Mediterraneo",
+    location: "North Park",
+    rating: 4.5,
+    cuisine: "Mediterranean",
+    image: mediterraneo,
+  },
+  {
+    restaurantId: "r12",
+    name: "The Steakhouse",
+    location: "Central Plaza",
+    rating: 4.7,
+    cuisine: "Grill / Steak",
+    image: thesteakhouse,
   },
 ];
 
