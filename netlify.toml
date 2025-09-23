@@ -1,0 +1,27 @@
+# ----------------------
+# Build Settings
+# ----------------------
+[build]
+  # Folder where Netlify runs npm install and build
+  base = "frontend"        
+
+  # Folder containing production-ready static files
+  publish = "dist"        
+
+  # Command to build the app
+  command = "npm run build"  
+
+# ----------------------
+# Redirects for React Router
+# ----------------------
+# Ensures SPA routing works (avoids 404 on page refresh)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ----------------------
+# Environment Variables
+# ----------------------
+[build.environment]
+  REACT_APP_API_URL = "https://your-backend-host.com"
