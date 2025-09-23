@@ -1,4 +1,6 @@
-import { useState }from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,10 +14,10 @@ const Navbar = () => {
     <div className='navbar'>
       <img className='logo' src={assets.logo3} alt=''/>
       <ul className='navbar-menu'>
-        <li onClick={()=>setMenu('home')} className={menu==='home'?'active':''}>Home</li>
-        <li onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</li>
-        <li onClick={()=>setMenu('mobile-app')} className={menu==='mobile-app'?'active':''}>Mobile-App</li>
-        <li onClick={()=>setMenu('contact-us')} className={menu==='contact-us'?'active':''}>Contact Us</li>
+        <Link to='/' onClick={()=>setMenu('home')} className={menu==='home'?'active':''}>Home</Link>
+        <a href='#restaurant-display' onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</a>
+        <a href='#' onClick={()=>setMenu('mobile-app')} className={menu==='mobile-app'?'active':''}>Mobile-App</a>
+        <a href='#footer' onClick={()=>setMenu('contact-us')} className={menu==='contact-us'?'active':''}>Contact Us</a>
       </ul>
       <div className='navbar-right'>
         <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />

@@ -8,7 +8,7 @@ const RestaurantDisplay = () => {
   const {restaurant_list} = useContext(StoreContext);
 
   return (
-    <div className='restaurant-display'>
+    <div className='restaurant-display' id='restaurant-display'>
         <h2>Top Restaurants Near You</h2>
         <div className='restaurant-display-list'>
             {

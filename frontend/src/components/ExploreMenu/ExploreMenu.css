@@ -65,3 +65,10 @@
     margin: 10px 0px;
     border: none;
 }
+
+@media (max-width: 1050px) {
+    .explore-menu p {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
