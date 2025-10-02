@@ -7,7 +7,7 @@ import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-i
 import {assets} from '../../assets/assets.js'
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
   const[menu, setMenu] = useState('home');
 
   return (
@@ -22,10 +22,10 @@ const Navbar = () => {
       <div className='navbar-right'>
         <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
         <div className='navbar-cart-icon'>
-          <FontAwesomeIcon icon={faCartShopping} shake />
+          <FontAwesomeIcon icon={faCartShopping}/>
           <div className='dot'></div>
         </div>
-        <button className='sign-in'>Sign in</button>
+        <button className='sign-in' onClick={()=>setShowLogin(true)}>Sign in</button>
       </div>
     </div>
   )

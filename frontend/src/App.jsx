@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import LoginPopup from "./components/LoginPopup/LoginPopup";
 
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
@@ -9,10 +11,13 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import "./index.css";
 
 export const App = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <>
+      {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
       <div className="app">
-        <Navbar />
+        <Navbar setShowLogin={setShowLogin}/>
         <div className="app-content">
           <Routes>
             <Route path="/" element={<Home />} />

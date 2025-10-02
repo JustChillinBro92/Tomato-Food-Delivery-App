@@ -31,7 +31,7 @@ const StoreContextProvider = (props) => {
         };
       }
 
-      // // if different restaurant show alert
+      // if different restaurant show alert
       // alert("You can only add items from one restaurant at a time.");
       return prev;
     })
@@ -57,7 +57,6 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems])
-
 
   const contextValues = {
     food_list,

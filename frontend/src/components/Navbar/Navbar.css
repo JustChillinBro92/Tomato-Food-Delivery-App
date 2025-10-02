@@ -22,11 +22,11 @@
     cursor: pointer;
 }
 
-.navbar-menu li {
+.navbar-menu a {
     position: relative;
     transition: color 0.3s;
 }
-.navbar-menu li::after {
+.navbar-menu a::after {
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: -3px;
@@ -37,7 +37,7 @@
     transition: transform 0.2s;
     transform-origin: left;
 }
-.navbar-menu li.active::after {
+.navbar-menu a.active::after {
     transform: scaleX(1);
 }
 
