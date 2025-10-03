@@ -16,3 +16,14 @@
     margin: 20px 0px;
     overflow-x: scroll;
 }
+
+.food-display-list::-webkit-scrollbar {
+    display: block;
+    height: 8px;
+}
+
+.food-display-list::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 10px;
+}
+

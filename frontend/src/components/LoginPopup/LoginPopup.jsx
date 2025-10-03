@@ -8,12 +8,17 @@ import './LoginPopup.css'
 const LoginPopup = ({setShowLogin}) => {
   const [currState, setCurrState] = useState('Sign Up');
 
+  const handleCrossIcon = () => {
+    setShowLogin(false);
+    document.body.style.overflow = '';
+  }
+
   return (
     <div className='login-popup'>
         <form className='login-popup-container'>
             <div className='login-popup-title'>
                 <h2>{currState}</h2>
-                <FontAwesomeIcon className='cross-icon' icon={faCircleXmark} onClick={()=>setShowLogin(false)}/>
+                <FontAwesomeIcon className='cross-icon' icon={faCircleXmark} onClick={handleCrossIcon}/>
             </div>
             <div className='login-popup-inputs'>
                 {currState==='Login'

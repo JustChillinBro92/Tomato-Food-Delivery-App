@@ -10,6 +10,11 @@ import './Navbar.css'
 const Navbar = ({setShowLogin}) => {
   const[menu, setMenu] = useState('home');
 
+  const handleSignIn = () => {
+    setShowLogin(true);
+    document.body.style.overflow = 'hidden';
+  }
+
   return (
     <div className='navbar'>
       <img className='logo' src={assets.logo3} alt=''/>
@@ -22,10 +27,10 @@ const Navbar = ({setShowLogin}) => {
       <div className='navbar-right'>
         <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
         <div className='navbar-cart-icon'>
-          <FontAwesomeIcon icon={faCartShopping}/>
+          <Link to='/cart'><FontAwesomeIcon icon={faCartShopping}/></Link>
           <div className='dot'></div>
         </div>
-        <button className='sign-in' onClick={()=>setShowLogin(true)}>Sign in</button>
+        <button className='sign-in' onClick={handleSignIn}>Sign in</button>
       </div>
     </div>
   )
