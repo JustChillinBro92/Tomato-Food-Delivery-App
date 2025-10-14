@@ -22,23 +22,27 @@ const Cart = () => {
                 return ( 
                   <div className='cart-item-details' key={index}>
                     <img src={item.image} alt="" />
-                    <div className="cart-item-details-name">
+                    <div className='cart-item-details-name'>
                       <p className='item-name'>{item.name}</p> 
                       <p className='rest-name'>{restaurant_list.find(R => R.restaurantId === item.restaurantId)?.name}</p>
                     </div>
-                    <div className='cart-item-counter-price'>
+                    <div className='cart-item-counter-price-trash'>
                       {
-                        <div className='cart-item-counter-container'>
-                          <div className='cart-item-counter'>
-                            <FontAwesomeIcon icon={faMinus} className='cart-operation-icon' onClick={()=> removeFromCart(item._id)}/>
-                              {cartItems.items[item._id]}
-                            <FontAwesomeIcon icon={faPlus} className='cart-operation-icon' onClick={()=> addToCart(item.restaurantId, item._id)}/>
+                        <div className='cart-item-counter-price-container'>
+                          <div className='cart-item-counter-container'>
+                            <div className='cart-item-counter'>
+                              <FontAwesomeIcon icon={faMinus} className='cart-operation-icon' onClick={()=> removeFromCart(item._id)}/>
+                                {cartItems.items[item._id]}
+                              <FontAwesomeIcon icon={faPlus} className='cart-operation-icon' onClick={()=> addToCart(item.restaurantId, item._id)}/>
+                            </div>
                           </div>
-                        </div>
+                          <p>${item.price * cartItems.items[item._id]}</p>
+                        </div>      
                       }
-                      <p>${item.price * cartItems.items[item._id]}</p>
+                      <div className='cart-item-trash'>
+                        <FontAwesomeIcon icon={faTrash} className='trash-icon'/> 
+                      </div>
                     </div>
-                    <FontAwesomeIcon icon={faTrash} className='trash-icon'/>
                   </div>
                 )
               }
