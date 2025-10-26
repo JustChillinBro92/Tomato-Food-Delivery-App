@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
@@ -19,6 +20,7 @@ export const App = () => {
       <div className="app">
         <Navbar setShowLogin={setShowLogin}/>
         <div className="app-content">
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
