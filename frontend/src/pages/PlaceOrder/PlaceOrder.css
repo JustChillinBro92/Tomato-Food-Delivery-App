@@ -1,0 +1,70 @@
+.place-order {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.place-order-content {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.place-order-header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.place-order-left {
+    width: 100%;
+    max-width: max(50%, 600px);
+}
+
+.place-order-left .title {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.info-fields {
+    background: linear-gradient(180deg, rgba(238, 42, 7, 0.113), white);
+    box-shadow: 5px 7px 10px #0000002d;
+    border-radius: 8px;
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.place-order-left input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.place-order-left .multi-fields {
+    display: flex;
+    gap: 10px;
+}
+
+.place-order-right {
+    width: 100%;
+    max-width: max(35%, 500px);
+}
+
+@media (max-width: 912px) {
+    .place-order-content {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .place-order-left, .place-order-right {
+        width: 100%;
+        max-width: max(45%, 900px);
+    }
+}

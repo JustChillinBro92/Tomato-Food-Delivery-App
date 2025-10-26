@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 import {assets} from '../../assets/assets.js'
+import { StoreContext } from '../../context/StoreContext.jsx'
 import './Navbar.css'
 
 const Navbar = ({setShowLogin}) => {
   const[menu, setMenu] = useState('home');
+  const { getTotalCartAmount } = useContext(StoreContext);
 
   const handleSignIn = () => {
     setShowLogin(true);
@@ -28,7 +30,7 @@ const Navbar = ({setShowLogin}) => {
         <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
         <div className='navbar-cart-icon'>
           <Link to='/cart'><FontAwesomeIcon icon={faCartShopping}/></Link>
-          <div className='dot'></div>
+          <div className={getTotalCartAmount()===0?'':'dot'}></div>
         </div>
         <button className='sign-in' onClick={handleSignIn}>Sign in</button>
       </div>

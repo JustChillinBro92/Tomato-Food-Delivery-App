@@ -54,6 +54,18 @@ const StoreContextProvider = (props) => {
     });
   };
 
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+    for(let item in cartItems.items) {  
+      let food_quantity = cartItems.items[item];      
+      if( food_quantity > 0) {
+        let foodInfo = food_list.find((food) => food._id === item);        
+        totalAmount += foodInfo.price * food_quantity; 
+      }    
+    }
+    return totalAmount;
+  }
+
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems])
@@ -65,6 +77,7 @@ const StoreContextProvider = (props) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    getTotalCartAmount,
   };
 
   return (

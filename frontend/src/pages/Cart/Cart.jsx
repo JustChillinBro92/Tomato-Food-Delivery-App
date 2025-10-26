@@ -1,4 +1,6 @@
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons'
 
@@ -6,7 +8,8 @@ import { StoreContext } from '../../context/StoreContext'
 import './Cart.css'
 
 const Cart = () => {
-  const {food_list, restaurant_list, cartItems, addToCart, removeFromCart} = useContext(StoreContext);
+  const {food_list, restaurant_list, cartItems, addToCart, removeFromCart, getTotalCartAmount} = useContext(StoreContext);
+  const navigate = useNavigate();
 
   return (
     <div className='cart'>
@@ -57,21 +60,22 @@ const Cart = () => {
           <div className='cart-total-details-container'>
             <div className='cart-total-details'>
               <p>Subtotal</p>
-              <p>${0}</p>
+              <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className='cart-total-details'>
               <p>Delivery Fee</p>
-              <p>${2}</p>
+              <p>${getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr />
             <div className='cart-total-details'>
               <p>Total</p>
-              <p>${0}</p>
+              <p>${getTotalCartAmount()===0?0:getTotalCartAmount() + 2}</p>
             </div>
-            <button>PROCEED TO CHECKOUT</button>
+            <button onClick={()=>navigate('/orders')}>PROCEED TO CHECKOUT</button>
           </div>
         </div>
+        
         <div className='cart-promocode'>
           <h2>Promo Code</h2>
           <div className='cart-promocode-container'>
