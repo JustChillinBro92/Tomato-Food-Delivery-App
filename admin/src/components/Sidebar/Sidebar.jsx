@@ -12,13 +12,21 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar-contents">
-        <NavLink to="/add" className="sidebar-option">
+        <NavLink to="/add-restaurant" className="sidebar-option">
         <FontAwesomeIcon icon={faCirclePlus} />
-          <p>Add Items</p>
+          <p>Add Restaurant</p>
         </NavLink>
-        <NavLink to="/list" className="sidebar-option">
+        <NavLink to="/add-food" className="sidebar-option">
+        <FontAwesomeIcon icon={faCirclePlus} />
+          <p>Add Food</p>
+        </NavLink>
+        <NavLink to="/list-restaurants" className="sidebar-option">
           <FontAwesomeIcon icon={faList} />
-          <p>List Items</p>
+          <p>List Restaurants</p>
+        </NavLink>
+        <NavLink to="/list-food" className="sidebar-option">
+          <FontAwesomeIcon icon={faList} />
+          <p>List Foods</p>
         </NavLink>
         <NavLink to="/orders" className="sidebar-option">
           <FontAwesomeIcon icon={faBowlFood} />

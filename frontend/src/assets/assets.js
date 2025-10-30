@@ -107,7 +107,7 @@ export const restaurant_list = [
     name: "GreenLeaf Restaurant",
     location: "Downtown",
     rating: 4.5,
-    cuisine: "Healthy / Organic",
+    cuisine: "Organic",
     image: greenleaf,
   },
   {
@@ -123,7 +123,7 @@ export const restaurant_list = [
     name: "SpiceHub",
     location: "City Center",
     rating: 4.7,
-    cuisine: "Indian / Fast Food",
+    cuisine: "Indian",
     image: spicehub,
   },
   {
@@ -155,7 +155,7 @@ export const restaurant_list = [
     name: "Noodle Nation",
     location: "South Market",
     rating: 4.1,
-    cuisine: "Asian / Chinese",
+    cuisine: "Chinese",
     image: noodlenation,
   },
   {
@@ -163,7 +163,7 @@ export const restaurant_list = [
     name: "Burger Barn",
     location: "Harbor Street",
     rating: 4.3,
-    cuisine: "American / Fast Food",
+    cuisine: "American",
     image: burgerbarn,
   },
   {
@@ -195,7 +195,7 @@ export const restaurant_list = [
     name: "The Steakhouse",
     location: "Central Plaza",
     rating: 4.7,
-    cuisine: "Grill / Steak",
+    cuisine: "Grill",
     image: thesteakhouse,
   },
 ];
@@ -344,7 +344,7 @@ export const food_list = [
     image: food_11,
     price: 10,
     description:
-      "Layered ice cream served in a jar with chocolate and biscuit crumbs.",
+      "Layered ice cream served in a jar with strawberry and biscuit crumbs.",
     category: "Deserts",
     restaurantId: "r6",
   },

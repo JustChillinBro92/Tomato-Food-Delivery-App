@@ -22,7 +22,7 @@ const FoodDisplay = ({category}) => {
                     price={item.price}
                     restaurant_id={item.restaurantId}
                   />
-                }     
+                }
             })}
         </div>
     </div>

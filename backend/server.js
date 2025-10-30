@@ -6,6 +6,7 @@ import { connectDB } from "./config/db.js";
 
 import foodRouter from "./routes/foodRouter.js";
 import userRouter from "./routes/userRouter.js";
+import restaurantRouter from "./routes/restaurantRouter.js"
 
 // app config
 const app = express();
@@ -20,8 +21,10 @@ connectDB();
 
 // api endpoints
 app.use("/api/user", userRouter);
+app.use("/api/restaurant", restaurantRouter);
 app.use("/api/food", foodRouter);
-app.use("/images", express.static('uploads'));
+app.use("/images/food", express.static('uploads/foods'));
+app.use("/images/restaurant", express.static('uploads/restaurants'));
 
 app.get("/", (req, res) => {
     res.send("API is working!");

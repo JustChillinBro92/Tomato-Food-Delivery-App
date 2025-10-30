@@ -1,9 +1,15 @@
 import foodModel from "../models/foodModels.js";
+import restaurantModel from "../models/restaurantModels.js"
 import fs from "fs";
 
 // add food item
 const addFood = async (req, res) => {
     let image_filename = `${req.file.filename}`;
+
+    const restaurant = await restaurantModel.findById(req.body.restaurantId);
+    if (!restaurant) {
+        return res.json({success: false, message: "Restaurant not found!"});
+    }
 
     const food = new foodModel({
         name: req.body.name,
@@ -11,6 +17,7 @@ const addFood = async (req, res) => {
         price: req.body.price,
         category: req.body.category,  
         image: image_filename, 
+        restaurantId: req.body.restaurantId,
     })
     try {
         // save food data in DB
@@ -24,7 +31,7 @@ const addFood = async (req, res) => {
 // list all food items
 const listFood = async (req, res) => {
     try {
-        const foods = await foodModel.find({});
+        const foods = await foodModel.find({}).populate("restaurantId", "name");
         res.json({success: true, data: foods});
     } catch (error) {
         res.json({success: false, message: "Error! Something went wrong"});
@@ -37,9 +44,9 @@ const removeFood = async (req, res) => {
         const food = await foodModel.findById(req.body.id);
 
         // remove from uploads folder
-        fs.unlink(`uploads/${food.image}`, (err) => {
+        fs.unlink(`uploads/foods/${food.image}`, (err) => {
             if(err) throw err;
-            console.log(`uploads/${food.image} was deleted!`);
+            console.log(`uploads/foods/${food.image} was deleted!`);
         })
         
         // remove from mongoDB

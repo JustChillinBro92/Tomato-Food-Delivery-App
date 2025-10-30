@@ -8,7 +8,7 @@
 
 .list-table-format {
     display: grid;
-    grid-template-columns: 0.6fr 2fr 1fr 1fr 0.5fr;
+    grid-template-columns: 0.6fr 1.5fr 1.5fr 1fr 1fr 0.5fr;
     align-items: center;
 
     font-size: 15px;
@@ -27,7 +27,7 @@
 }
 
 .food-img {
-    width: 120px;
+    width: 105px;
     border-radius: 0.3rem;
 }
 

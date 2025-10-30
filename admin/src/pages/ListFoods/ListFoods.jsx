@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 
 import './List.css'
 
-const List = ({backend_url}) => {
+const ListFoods = ({backend_url}) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
@@ -42,6 +43,7 @@ const List = ({backend_url}) => {
         <div className="list-table-format title">
           <b>Image</b>
           <b>Name</b>
+          <b>Restaurant</b>
           <b>Category</b>
           <b>Price</b>
           <b>Action</b>
@@ -50,8 +52,9 @@ const List = ({backend_url}) => {
         {list.map((item, index) => {
           return(
             <div key={index} className="list-table-format data">
-              <img className="food-img" src={`${backend_url}/images/${item.image}`} alt="" />
+              <img className="food-img" src={`${backend_url}/images/food/${item.image}`} alt="" />
               <p>{item.name}</p>
+              <p>{item.restaurantId.name}</p>
               <p>{item.category}</p>
               <p>{item.price}</p>
               <p onClick={()=>removeItem(item._id)}><FontAwesomeIcon className="remove-icon" icon={faCircleXmark} /></p>
@@ -63,4 +66,4 @@ const List = ({backend_url}) => {
   )
 }
 
-export default List
+export default ListFoods;

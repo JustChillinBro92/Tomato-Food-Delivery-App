@@ -4,8 +4,11 @@ import { ToastContainer } from 'react-toastify'
 
 import Navbar from './components/Navbar/navabar'
 import Sidebar from './components/Sidebar/Sidebar'
-import Add from './pages/Add/Add'
-import List from './pages/List/List'
+
+import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
+import AddFood from './pages/AddFood/AddFood'
+import ListRestaurants from './pages/ListRestaurants/ListRestaurants'
+import ListFoods from './pages/ListFoods/ListFoods'
 import Orders from './pages/Orders/Orders'
 
 import './index.css'
@@ -23,8 +26,10 @@ const App = () => {
         <Sidebar/>
         <ToastContainer/>
         <Routes>
-          <Route path='/add' element={<Add backend_url={url}/>}/>
-          <Route path='/list' element={<List backend_url={url}/>}/>
+          <Route path='/add-restaurant' element={<AddRestaurant backend_url={url}/>}/>
+          <Route path='/add-food' element={<AddFood backend_url={url}/>}/>
+          <Route path='/list-restaurants' element={<ListRestaurants backend_url={url}/>}/>
+          <Route path='/list-food' element={<ListFoods backend_url={url}/>}/>
           <Route path='/orders' element={<Orders backend_url={url}/>}/>
         </Routes>
       </div>

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios"
 import { toast } from "react-toastify";
 
 import { assets } from "../../assets/assets";
-import "./Add.css";
+import "../AddFood/Add.css";
 
-const Add = ({backend_url}) => {
+const AddRestaurant = ({backend_url}) => {
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
     description: "",
-    category: "Salad",
-    price: "",
+    location: "",
+    rating: "",
+    cuisine: "Organic",
   })
 
   const onChangeHandler = (event) => {
@@ -26,17 +27,19 @@ const Add = ({backend_url}) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description);
-    formData.append("category", data.category);
-    formData.append("price", Number(data.price));
+    formData.append("location", data.location);
+    formData.append("rating", Number(data.rating));
+    formData.append("cuisine", data.cuisine);
     formData.append("image", image);
     
-    const response = await axios.post(`${backend_url}/api/food/add`, formData);
+    const response = await axios.post(`${backend_url}/api/restaurant/add`, formData);
     if(response.data.success) {     
         setData({
             name: "",
             description: "",
-            category: "Salad",
-            price: "",          
+            location: "",
+            rating: "",
+            cuisine: "Salad",         
         });
         setImage(false);
         toast.success(response.data.message)
@@ -47,7 +50,7 @@ const Add = ({backend_url}) => {
 
   return (
     <div className="add">
-      <h3>ADD FOOD ITEM</h3>
+      <h3>ADD RESTAURANT</h3>
       <form className="flex-col" onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
@@ -62,50 +65,65 @@ const Add = ({backend_url}) => {
         </div>
 
         <div className="add-product-name flex-col">
-          <p>Product Name</p>
+          <p>Restaurant Name</p>
           <input 
           type="text" 
           name="name" 
           value={data.name}
-          placeholder="Type product name here" 
+          placeholder="Type restaurant name here" 
           onChange={onChangeHandler} />
         </div>
 
         <div className="add-product-description flex-col">
-          <p>Product Description</p>
+          <p>Restaurant Description</p>
           <textarea
             name="description"
             value={data.description}
             row="6"
-            placeholder="Write product description here..."
+            placeholder="Write restaurant description here..."
             onChange={onChangeHandler} />
         </div>
 
         <div className="add-category-price">
-          <div className="add-category flex-col">
-            <p>Category</p>
+          <div className="add-cuisine flex-col">
+            <p>Cuisine</p>
             <select 
-            name="category"
-            value={data.category}
+            name="cuisine"
+            value={data.cuisine}
             onChange={onChangeHandler}
             >
-              <option value="Salad">Salad</option>
-              <option value="Rolls">Rolls</option>
-              <option value="Sandwich">Sandwich</option>
-              <option value="Pure-Veg">Pure Veg</option>
-              <option value="Non-Veg">Cake</option>
-              <option value="Pasta">Pasta</option>
-              <option value="Noodles">Noodles</option>
-              <option value="Deserts">Deserts</option>
+              <option value="Organic">Organic</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Indian">Indian</option>
+              <option value="Indian Fusion">Indian Fusion</option>
+              <option value="Italian">Italian</option>
+              <option value="Bakery & Desserts">Bakery & Desserts</option>
+              <option value="Chinese">Chinese</option>
+              <option value="American">American</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Mediterranean">Mediterranean</option>
+              <option value="Grill">Grill</option>
             </select>
           </div>
+
           <div className="add-product-price flex-col">
-            <p>Price</p>
+            <p>Location</p>
+            <input 
+            type="text" 
+            name="location"
+            value={data.location} 
+            placeholder="location" 
+            onChange={onChangeHandler} />
+          </div>
+
+          <div className="add-product-price flex-col">
+            <p>Rating</p>
             <input 
             type="Number" 
-            name="price"
-            value={data.price} 
-            placeholder="$20" 
+            name="rating"
+            value={data.rating} 
+            placeholder="4.5" 
             onChange={onChangeHandler} />
           </div>
         </div>
@@ -118,4 +136,4 @@ const Add = ({backend_url}) => {
   );
 };
 
-export default Add;
+export default AddRestaurant;
