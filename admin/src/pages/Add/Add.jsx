@@ -92,8 +92,8 @@ const Add = ({backend_url}) => {
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Sandwich">Sandwich</option>
-              <option value="Pure-Veg">Pure-Veg</option>
-              <option value="Non-Veg">Non-Veg</option>
+              <option value="Pure-Veg">Pure Veg</option>
+              <option value="Non-Veg">Cake</option>
               <option value="Pasta">Pasta</option>
               <option value="Noodles">Noodles</option>
               <option value="Deserts">Deserts</option>

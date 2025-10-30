@@ -1,20 +1,33 @@
 import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faMagnifyingGlass, 
+  faCartShopping, 
+  faCircleUser,
+  faBasketShopping, 
+  faArrowRightToBracket,
+} from '@fortawesome/free-solid-svg-icons'
 
 import {assets} from '../../assets/assets.js'
 import { StoreContext } from '../../context/StoreContext.jsx'
 import './Navbar.css'
 
 const Navbar = ({setShowLogin}) => {
+  const navigate = useNavigate();
   const[menu, setMenu] = useState('home');
-  const { getTotalCartAmount } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
 
   const handleSignIn = () => {
     setShowLogin(true);
     document.body.style.overflow = 'hidden';
+  }
+
+  const OnLogOut = () => {
+    localStorage.removeItem('token');
+    setToken("");
+    navigate("/");
   }
 
   return (
@@ -32,7 +45,17 @@ const Navbar = ({setShowLogin}) => {
           <Link to='/cart'><FontAwesomeIcon icon={faCartShopping}/></Link>
           <div className={getTotalCartAmount()===0?'':'dot'}></div>
         </div>
-        <button className='sign-in' onClick={handleSignIn}>Sign in</button>
+          {!token? ( 
+            <button className='sign-in' onClick={handleSignIn}>Sign in</button>
+          ) : ( 
+          <div className='nav-profile'>
+            <FontAwesomeIcon icon={faCircleUser} className='nav-profile-icon'/>
+            <ul className='nav-profile-dropdown'>
+              <li><FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>Orders</li>
+              <li onClick={OnLogOut}><FontAwesomeIcon icon={faArrowRightToBracket} className='nav-icon'/>Logout</li>
+            </ul>
+          </div> 
+          )}
       </div>
     </div>
   )

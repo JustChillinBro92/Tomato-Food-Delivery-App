@@ -83,6 +83,50 @@
     background-color: #fff4f2;
 }
 
+.nav-profile {
+    position: relative;
+}
+
+.nav-profile-icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.nav-profile-dropdown {
+    position: absolute;
+    display: none;
+    /* top: 2rem; */
+    right: 0;
+    z-index: 1;
+}
+
+.nav-profile:hover .nav-profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    padding: 16px 25px;
+    border: 1px solid black;
+    border-radius: 6px;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+.nav-profile-dropdown li {
+    display: flex;
+    /* padding: 8px; */
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    font-size: 17px;
+    color: #49557e;
+}
+
+.nav-profile-dropdown li:hover {
+    font-weight: 500;
+}
+
+
 @media(max-width: 1050px) {
     .navbar .logo {
         width: 180px;
