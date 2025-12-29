@@ -1,11 +1,16 @@
+import { useContext } from 'react'
+
+import { StoreContext } from '../../context/StoreContext'
 import { assets } from '../../assets/assets'
 import './RestaurantItem.css'
 
 const RestaurantItem = ({restaurant_id, image, name, cuisine, rating, location}) => {
+  const {url} = useContext(StoreContext);
+    
   return (
     <div className='restaurant-item' id='restaurant-item'>
         <div className='restaurant-item-img-container'>
-            <img src={image} className="restaurant-item-img" />
+            <img src={url+"/images/restaurant/"+image} className="restaurant-item-img" />
             <div className='restaurant-item-name'>
                 <p>{name}</p>
             </div>

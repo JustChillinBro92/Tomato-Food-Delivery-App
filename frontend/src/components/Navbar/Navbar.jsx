@@ -32,7 +32,7 @@ const Navbar = ({setShowLogin}) => {
 
   return (
     <div className='navbar'>
-      <img className='logo' src={assets.logo3} alt=''/>
+      <Link to='/'><img className='logo' src={assets.logo3} alt=''/></Link>
       <ul className='navbar-menu'>
         <Link to='/' onClick={()=>setMenu('home')} className={menu==='home'?'active':''}>Home</Link>
         <a href='#restaurant-display' onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</a>

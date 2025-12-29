@@ -16,6 +16,7 @@ const Cart = () => {
     addToCart,
     removeFromCart,
     getTotalCartAmount,
+    url
   } = useContext(StoreContext);
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ const Cart = () => {
                 if (cartItems.items[item._id] > 0) {
                   return (
                     <div className='cart-item-details' key={index}>
-                      <img src={item.image} alt='' />
+                      <img src={url+"/images/food/"+item.image} alt='' />
                       <div className='cart-item-details-name'>
                         <p className='item-name'>{item.name}</p>
                         <p className='rest-name'>
@@ -68,7 +69,7 @@ const Cart = () => {
                                   icon={faPlus}
                                   className='cart-operation-icon'
                                   onClick={() =>
-                                    addToCart(item.restaurantId, item._id)
+                                    addToCart(item.restaurantId._id, item._id)
                                   }
                                 />
                               </div>

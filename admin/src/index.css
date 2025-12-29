@@ -7,7 +7,6 @@
   font-family: Outfit;
 }
 
-
 body{
   min-height: 100vh;
   background-color: #fcfcfc;
@@ -32,7 +31,7 @@ hr {
 
 .app-content {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .flex-col {

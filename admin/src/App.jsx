@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 
 const App = () => {
+  // const url = 'https://tomato-backend-av7d.onrender.com';
   const url = 'http://localhost:4000';
 
   return (

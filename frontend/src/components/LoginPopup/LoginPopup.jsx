@@ -29,6 +29,7 @@ const LoginPopup = ({setShowLogin}) => {
 
   const OnLogin = async (event) => {
     event.preventDefault();
+    document.body.style.overflow = '';
 
     let new_url = url;
     if(currState === 'Login')
@@ -45,9 +46,9 @@ const LoginPopup = ({setShowLogin}) => {
     }
   }
 
-  useEffect(() => {
-    console.log(data);
-  },[data])
+  // useEffect(() => {
+  //   console.log(data);
+  // },[data])
 
   return (
     <div className='login-popup'>
