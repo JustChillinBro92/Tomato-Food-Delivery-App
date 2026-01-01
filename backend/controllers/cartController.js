@@ -78,9 +78,6 @@ const getCart = async (req, res) => {
         if(!userData)
             return res.json({ success: false, message: "User not found!" });
 
-        if(!userData.cartData || !userData.cartData.items || Object.keys(userData.cartData.items).length === 0)
-            return res.json({ success: false, message: "Users Cart is empty!" });
-
         res.json({success: true, message: "Fetched user cart!", cart: userData.cartData});
     } catch (error) {
         console.log(error);

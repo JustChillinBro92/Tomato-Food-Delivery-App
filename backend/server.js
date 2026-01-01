@@ -8,6 +8,7 @@ import userRouter from "./routes/userRouter.js";
 import cartRouter from "./routes/cartRouter.js";
 import foodRouter from "./routes/foodRouter.js";
 import restaurantRouter from "./routes/restaurantRouter.js"
+import orderRouter from "./routes/orderRouter.js";
 
 // app config
 const app = express();
@@ -26,6 +27,7 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter)
 app.use("/api/restaurant", restaurantRouter);
 app.use("/api/food", foodRouter);
+app.use("/api/order", orderRouter)
 app.use("/images/food", express.static('uploads/foods'));
 app.use("/images/restaurant", express.static('uploads/restaurants'));
 

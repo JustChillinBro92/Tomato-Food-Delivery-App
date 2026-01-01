@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { StoreContext } from '../../context/StoreContext';
-import { assets } from '../../assets/assets';
 import './Cart.css';
 
 const Cart = () => {

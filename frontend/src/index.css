@@ -18,16 +18,32 @@ input[type=number]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body{
-  min-height: 100vh;
   background-color: #fcfcfc;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app {
   display: flex;
   flex-direction: column;
+  
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.app-content {
+  flex: 1;
 }
 
 a {
