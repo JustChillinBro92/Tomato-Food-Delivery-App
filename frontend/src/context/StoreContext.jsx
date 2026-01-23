@@ -11,9 +11,14 @@ const StoreContextProvider = (props) => {
     restaurantId: null,
     items: {},
   });
-
   const [food_list, setFoodList] = useState([]);
   const [restaurant_list, setRestaurantList] = useState([]);
+
+  const handleAuthError = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    setCartItems({ restaurantId: null, items: {} });
+  }
 
   const addToCart = async (restaurantId, itemId) => {
     if (token) {
@@ -49,7 +54,8 @@ const StoreContextProvider = (props) => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } catch (error) {
-        console.error(error);
+        if(error.response?.status === 401)
+          handleAuthError();
       }
     } else {
       alert("User must login first!");
@@ -81,7 +87,8 @@ const StoreContextProvider = (props) => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } catch (error) {
-        console.error(error);
+        if(error.response?.status === 401)
+          handleAuthError();
       }
     } else {
       alert("User must login first!");
@@ -91,13 +98,14 @@ const StoreContextProvider = (props) => {
   const getTotalCartAmount = () => {
     let totalAmount = 0;
 
-    if (cartItems != null) {
-      for (let item in cartItems.items) {
-        let food_quantity = cartItems.items[item];
-        if (food_quantity > 0) {
-          let foodInfo = food_list.find((food) => food._id === item);
-          totalAmount += foodInfo.price * food_quantity;
-        }
+    if(!cartItems?.items) return totalAmount;
+
+    for (let item in cartItems.items) {
+      let food_quantity = cartItems.items[item];
+      let foodInfo = food_list.find((food) => food._id === item);
+
+      if (foodInfo && food_quantity > 0) {
+        totalAmount += foodInfo.price * food_quantity;
       }
     }
 
@@ -113,10 +121,16 @@ const StoreContextProvider = (props) => {
   };
 
   const fetchCart = async (token) => {
-    const cart_response = await axios.get(url + "/api/cart/get", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    setCartItems(cart_response.data.cart);
+    try {
+      const cart_response = await axios.get(url + "/api/cart/get", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setCartItems(cart_response.data.cart?? { restaurantId: null, items: {} });
+    } catch (error) {
+      if(error.response?.status === 401)
+        handleAuthError();
+    }
   };
 
   useEffect(() => {
