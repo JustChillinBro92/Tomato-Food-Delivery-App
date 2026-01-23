@@ -11,6 +11,7 @@ const StoreContextProvider = (props) => {
     restaurantId: null,
     items: {},
   });
+  const [orderData, setOrderData] = useState([]);
   const [food_list, setFoodList] = useState([]);
   const [restaurant_list, setRestaurantList] = useState([]);
 
@@ -18,6 +19,7 @@ const StoreContextProvider = (props) => {
     localStorage.removeItem("token");
     setToken("");
     setCartItems({ restaurantId: null, items: {} });
+    setOrderData([]);
   }
 
   const addToCart = async (restaurantId, itemId) => {
@@ -133,6 +135,18 @@ const StoreContextProvider = (props) => {
     }
   };
 
+  const fetchOrder = async (token) => {
+    try {
+      const order_response = await axios.get(url+"/api/order/userorders", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      setOrderData(order_response.data.data);
+    } catch (error) {
+      if(error.response?.status === 401)
+        handleAuthError();
+    }
+  }
+
   useEffect(() => {
     async function loadData() {
       await fetchList();
@@ -141,6 +155,7 @@ const StoreContextProvider = (props) => {
       if (token) {
         setToken(token);
         await fetchCart(token);
+        await fetchOrder(token);
       }
     }
     loadData();
@@ -153,6 +168,7 @@ const StoreContextProvider = (props) => {
   const contextValues = {
     food_list,
     restaurant_list,
+    orderData,
     cartItems,
     setCartItems,
     addToCart,
