@@ -60,7 +60,7 @@ const StoreContextProvider = (props) => {
           handleAuthError();
       }
     } else {
-      alert("User must login first!");
+      alert("Login to add to cart!");
     }
   };
 
@@ -93,7 +93,7 @@ const StoreContextProvider = (props) => {
           handleAuthError();
       }
     } else {
-      alert("User must login first!");
+      alert("Login to remove from cart!");
     }
   };
 

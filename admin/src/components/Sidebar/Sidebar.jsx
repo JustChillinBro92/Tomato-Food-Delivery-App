@@ -1,7 +1,5 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBowlFood } from '@fortawesome/free-solid-svg-icons'
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -24,13 +22,13 @@ const Sidebar = () => {
           <FontAwesomeIcon icon={faList} />
           <p>List Restaurants</p>
         </NavLink>
-        <NavLink to="/list-food" className="sidebar-option">
+        <NavLink to="/list-foods" className="sidebar-option">
           <FontAwesomeIcon icon={faList} />
           <p>List Foods</p>
         </NavLink>
-        <NavLink to="/orders" className="sidebar-option">
-          <FontAwesomeIcon icon={faBowlFood} />
-          <p>Orders</p>
+        <NavLink to="/list-orders" className="sidebar-option">
+          <FontAwesomeIcon icon={faList} />
+          <p>List Orders</p>
         </NavLink>
       </div>
     </div>

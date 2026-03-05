@@ -28,16 +28,6 @@ const addFood = async (req, res) => {
     }
 }
 
-// list all food items
-const listFood = async (req, res) => {
-    try {
-        const foods = await foodModel.find({}).populate("restaurantId", "name");
-        res.json({success: true, data: foods});
-    } catch (error) {
-        res.json({success: false, message: "Error! Something went wrong"});
-    }
-}
-
 // remove food item
 const removeFood = async (req, res) => {
     try {
@@ -57,4 +47,15 @@ const removeFood = async (req, res) => {
     }
 }
 
-export {addFood, listFood, removeFood};
+// list all food items
+const listFood = async (req, res) => {
+    try {
+        const foods = await foodModel.find({}).populate("restaurantId", "name image");
+        res.json({success: true, data: foods});
+    } catch (error) {
+        res.json({success: false, message: "Error! Something went wrong"});
+    }
+}
+
+
+export { addFood, removeFood, listFood };

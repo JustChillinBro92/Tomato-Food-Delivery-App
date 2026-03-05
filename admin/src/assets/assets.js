@@ -1,4 +1,4 @@
-import logo from './logo.png'
+import logo from './logo2.png'
 import upload_area from './upload_area.png'
 
 export const assets = {

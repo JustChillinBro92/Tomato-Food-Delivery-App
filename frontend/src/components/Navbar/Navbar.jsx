@@ -52,7 +52,7 @@ const Navbar = ({setShowLogin}) => {
           <div className='nav-profile'>
             <FontAwesomeIcon icon={faCircleUser} className='nav-profile-icon'/>
             <ul className='nav-profile-dropdown'>
-              <li><FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>Orders</li>
+              <li><Link to='/myorders'><FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>Orders</Link></li>
               <li onClick={OnLogOut}><FontAwesomeIcon icon={faArrowRightToBracket} className='nav-icon'/>Logout</li>
             </ul>
           </div> 

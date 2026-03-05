@@ -44,7 +44,7 @@ const ListRestaurants = ({backend_url}) => {
           <b>Image</b>
           <b>Name</b>
           <b>Location</b>
-          <b>Cuisine</b>
+          <b>Cuisine</b>  
           <b>Rating</b>
           <b>Action</b>
         </div>

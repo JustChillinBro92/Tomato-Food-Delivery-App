@@ -5,6 +5,7 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+// place customer order
 const placeOrder = async (req, res) => {
     const frontend_url = "http://localhost:5173";
     try {
@@ -54,12 +55,13 @@ const placeOrder = async (req, res) => {
     }
 }
 
+// verify order paid for or not
 const verifyOrder = async (req, res) => {
     const { orderId, success } = req.body;
     try {
         const order = await orderModel.findById(orderId);
         if (!order) {
-        return res.json({ success: false, message: "Order not found" });
+            return res.json({ success: false, message: "Order not found!" });
         }
 
         if(success === "true") {
@@ -70,11 +72,11 @@ const verifyOrder = async (req, res) => {
                 payment: true,
             });
 
-            res.json({ success: true, message: "Paid" });
+            res.json({ success: true, message: "Paid!" });
         } else {
             // delete orderData for payment failure
             await orderModel.findByIdAndDelete(orderId);
-            res.json({ success: false, message: "Not paid" });
+            res.json({ success: false, message: "Not paid!" });
         }
     } catch (error) {
         console.log(error);
@@ -82,6 +84,7 @@ const verifyOrder = async (req, res) => {
     }
 }
 
+// list all orders of a user
 const userOrders = async (req, res) => {
     try {
         const orders = await orderModel.find({ userId: req.userId });
@@ -92,4 +95,14 @@ const userOrders = async (req, res) => {
     }
 }
 
-export { placeOrder, verifyOrder, userOrders }
+// list all orders made till date
+const listOrders = async (req, res) => {
+    try {
+        const orders = await orderModel.find({});
+        res.json({success: true, data: orders});
+    } catch (error) {
+        res.json({success: false, message: "Error! Something went wrong"});
+    }
+}
+
+export { placeOrder, verifyOrder, userOrders, listOrders }

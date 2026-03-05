@@ -2,7 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4%;
+  padding: 2rem 1%;
+}
+
+.navbar-contents .logo {
+  width: 300px;
+  border-radius: 12px;
 }
 
 .admin-profile {

@@ -22,16 +22,6 @@ const addRestaurant = async (req, res) => {
     }
 }
 
-// list all restaurant items
-const listRestaurant = async (req, res) => {
-    try {
-        const restaurants = await restaurantModel.find({});
-        res.json({success: true, data: restaurants});
-    } catch (error) {
-        res.json({success: false, message: "Error! Something went wrong"});
-    }
-}
-
 // remove restaurant item
 const removeRestaurant = async (req, res) => {
     try {
@@ -51,4 +41,14 @@ const removeRestaurant = async (req, res) => {
     }
 }
 
-export {addRestaurant, listRestaurant, removeRestaurant};
+// list all restaurant items
+const listRestaurant = async (req, res) => {
+    try {
+        const restaurants = await restaurantModel.find({});
+        res.json({success: true, data: restaurants});
+    } catch (error) {
+        res.json({success: false, message: "Error! Something went wrong"});
+    }
+}
+
+export { addRestaurant, removeRestaurant, listRestaurant };

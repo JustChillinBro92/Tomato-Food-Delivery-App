@@ -1,4 +1,3 @@
-import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
@@ -30,8 +29,8 @@ const App = () => {
           <Route path='/add-restaurant' element={<AddRestaurant backend_url={url}/>}/>
           <Route path='/add-food' element={<AddFood backend_url={url}/>}/>
           <Route path='/list-restaurants' element={<ListRestaurants backend_url={url}/>}/>
-          <Route path='/list-food' element={<ListFoods backend_url={url}/>}/>
-          <Route path='/orders' element={<Orders backend_url={url}/>}/>
+          <Route path='/list-foods' element={<ListFoods backend_url={url}/>}/>
+          <Route path='/list-orders' element={<Orders backend_url={url}/>}/>
         </Routes>
       </div>
     </div>

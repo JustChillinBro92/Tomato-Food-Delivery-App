@@ -112,17 +112,19 @@
     list-style: none;
 }
 
-.nav-profile-dropdown li {
+.nav-profile-dropdown li, .nav-profile-dropdown li a {
     display: flex;
-    /* padding: 8px; */
+    padding: 2px;
     gap: 10px;
     align-items: center;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 19px;
     color: #49557e;
+    transition: 0.2s;
 }
 
 .nav-profile-dropdown li:hover {
+    transform: translateX(-3px);
     font-weight: 500;
 }
 
