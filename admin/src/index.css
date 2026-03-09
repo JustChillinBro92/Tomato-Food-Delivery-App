@@ -15,6 +15,7 @@ body{
 .app {
   display: flex;
   flex-direction: column;
+  width: 100%;
   /* overflow-x: hidden; */
 }
 
@@ -38,4 +39,10 @@ hr {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+@media(max-width: 650px) {
+  .app {
+    width: fit-content;
+  }
 }

@@ -1,15 +1,13 @@
-.order-list-item {
-    display: grid;
-    grid-template-columns: 1.2fr 1.5fr 1fr 0.6fr 0.8fr;
-
-    font-size: 15px;
+.order {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    padding: 12px 15px;
-    border: 1px solid #cacaca;
-}
+    padding: 2rem;
 
-.order-list-item p {
-    padding: 0rem 1rem;
+    margin-left: 5px;
+    margin-top: 20px;
+
+    width: 100%;
 }
 
 .order-list-table-format {
@@ -22,6 +20,20 @@
     padding: 12px 15px;
     border: 1px solid #cacaca;
 }
+
+.order-list-item {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 1fr 0.6fr 0.8fr;
+
+    font-size: 15px;
+    gap: 20px;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+}
+
+.order-list-item p {
+    padding: 0rem 1rem;
+}   
 
 .order-list-table-format b, .order-list-table-format p {
     padding: 1rem;
@@ -59,9 +71,33 @@
 }
 
 .order-list-item .order-status select{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
     padding: 10px 15px;
+    transition: 0.3s;
 }
 
 .order-list-item .order-status select:hover {
     cursor: pointer;
+    background-color: rgb(240, 240, 240);
+}
+
+.fit-content {
+    padding: 5px;
+    height: fit-content;
+}
+
+@media(max-width: 1200px) {
+    .order {
+        width: fit-content;
+    }
+
+    .order-list-table-format {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .order-list-item {
+       grid-template-columns: 1.5fr 2fr 2fr;
+    }
 }
