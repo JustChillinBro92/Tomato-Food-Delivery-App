@@ -7,7 +7,7 @@
 
 .navbar .logo {
     width: 300px;
-    border-radius: 12px;
+    border-radius: 6px;
 }
 
 .navbar-menu {
@@ -153,6 +153,11 @@
         text-wrap: nowrap;
         padding: 12px 25px;
     }
+
+    .nav-profile-icon {
+        font-size: 21px;
+        cursor: pointer;
+    }
 }
 
 @media(max-width: 900px) {
@@ -190,6 +195,11 @@
 @media (max-width: 480px) {
     .navbar .logo {
         width: 140px;
+    }
+
+    .nav-profile-icon {
+        font-size: 20px;
+        cursor: pointer;
     }
 }
 

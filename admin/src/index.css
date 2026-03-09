@@ -7,6 +7,10 @@
   font-family: Outfit;
 }
 
+:root {
+  width: 100%;
+}
+
 body{
   min-height: 100vh;
   background-color: #fcfcfc;
@@ -42,7 +46,7 @@ hr {
 }
 
 @media(max-width: 650px) {
-  .app {
+  :root {
     width: fit-content;
   }
 }

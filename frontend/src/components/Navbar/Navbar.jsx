@@ -34,12 +34,16 @@ const Navbar = ({setShowLogin}) => {
   return (
     <div className='navbar'>
       <Link to='/'><img className='logo' src={assets.logo3} alt=''/></Link>
+      
       <ul className='navbar-menu'>
         <Link to='/' onClick={()=>setMenu('home')} className={menu==='home'?'active':''}>Home</Link>
-        <a href='#restaurant-display' onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</a>
+        {/* <a href='#restaurant-display' onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</a> */}
+
+        <Link to="/#restaurant-display" onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</Link>
         <a href='#' onClick={()=>setMenu('mobile-app')} className={menu==='mobile-app'?'active':''}>Mobile-App</a>
         <a href='#footer' onClick={()=>setMenu('contact-us')} className={menu==='contact-us'?'active':''}>Contact Us</a>
       </ul>
+
       <div className='navbar-right'>
         <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
         <div className='navbar-cart-icon'>

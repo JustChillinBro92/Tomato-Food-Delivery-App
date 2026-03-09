@@ -36,6 +36,7 @@ const Cart = () => {
             <h1>Your</h1>
             <h1 className='color-header'>Cart</h1>
           </div>
+
           <div className='cart-items'>
             <div className='cart-items-title'>
               {food_list.map((item, index) => {

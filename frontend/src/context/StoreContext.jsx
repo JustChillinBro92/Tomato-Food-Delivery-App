@@ -161,9 +161,9 @@ const StoreContextProvider = (props) => {
     loadData();
   }, []);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  // useEffect(() => {
+  //   console.log(cartItems);
+  // }, [cartItems]);
 
   const contextValues = {
     food_list,

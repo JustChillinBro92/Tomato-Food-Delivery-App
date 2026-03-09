@@ -19,11 +19,12 @@ const MyOrders = () => {
       }
     }
 
+    const year = d.toLocaleString("en-US", { year : "numeric" });
     const month = d.toLocaleString("en-US", { month : "long" });
     const day = getOrdinal(d.getDate());
     const time = d.toLocaleString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
 
-    return `${month} ${day}, ${time}`;
+    return `${month} ${day} ${year}, ${time}`;
   }
 
   useEffect(() => {

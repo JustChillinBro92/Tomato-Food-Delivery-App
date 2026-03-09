@@ -77,6 +77,12 @@
     }
 }
 
+@media(max-width: 640px) {
+    .header {
+        height: 40vw;
+    }
+}
+
 @media (max-width: 480px) {
     .header-contents {
         transform: translateY(30%);

@@ -26,6 +26,7 @@ const Orders = ({ backend_url }) => {
     })
 
     if(response.data.success) {
+      toast.success(response.data.message);
       await fetchOrders();
     } else {
       toast.error(response.data.message);

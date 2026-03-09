@@ -111,3 +111,38 @@
     font-weight: 400;
     font-size: 18px;
 }
+
+@media(max-width: 576px) {
+    .my-orders .container .container-restaurant {
+        flex-direction: column;
+        align-items: start;
+        gap: 15px;
+    }
+}
+
+
+@media(max-width: 420px) {
+    .my-orders .container {
+        padding: 17.5px 20px;
+    }
+}
+
+@media(max-width: 392px) {
+    .my-orders .container img {
+        width: 90px;
+    }
+
+    .my-orders .container .container-order .order-item .details {
+        font-size: 13px;
+    }
+
+    .my-orders .container .container-total-reorder .total {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 335px) {
+    .my-orders .container .container-order .order-item {
+        gap: 1rem
+    }
+}
