@@ -51,4 +51,14 @@ const listRestaurant = async (req, res) => {
     }
 }
 
-export { addRestaurant, removeRestaurant, listRestaurant };
+// get details of a particular restaurant
+const getRestaurant = async (req, res) => {
+    try {
+        const restaurant = await restaurantModel.findById(req.params.id);
+        res.json({success: true, data: restaurant});
+    } catch (error) {
+        res.json({success: false, message: "Error! Something went wrong"});
+    }
+}
+
+export { addRestaurant, removeRestaurant, listRestaurant, getRestaurant };

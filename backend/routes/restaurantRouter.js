@@ -1,6 +1,11 @@
 import express from "express";
 import multer from "multer";
-import { addRestaurant, listRestaurant, removeRestaurant } from "../controllers/restaurantController.js";
+import { 
+    addRestaurant, 
+    getRestaurant, 
+    listRestaurant, 
+    removeRestaurant 
+} from "../controllers/restaurantController.js";
 
 const restaurantRouter = express.Router();
 
@@ -16,5 +21,6 @@ const upload = multer({storage: _storage});
 restaurantRouter.post("/add", upload.single("image"), addRestaurant);
 restaurantRouter.get("/list", listRestaurant);
 restaurantRouter.post("/remove", removeRestaurant);
+restaurantRouter.get("/:id", getRestaurant)
 
 export default restaurantRouter;

@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { StoreContext } from "../../context/StoreContext";
 import "./MyOrders.css";
-import { useNavigate } from "react-router-dom";
 
 const MyOrders = () => {
   const { url, orderData, token } = useContext(StoreContext);

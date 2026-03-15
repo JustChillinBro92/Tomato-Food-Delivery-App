@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 import RestaurantItem from '../RestaurantItem/RestaurantItem'
 import { StoreContext } from '../../context/StoreContext'
@@ -15,7 +15,7 @@ const RestaurantDisplay = () => {
                 restaurant_list.map((item, index) => {
                     return <RestaurantItem
                         key={index}
-                        restaurant_id={item.restaurantId}
+                        restaurant_id={item._id}
                         image={item.image}
                         name={item.name}
                         cuisine={item.cuisine}

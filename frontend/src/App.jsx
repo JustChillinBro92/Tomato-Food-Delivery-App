@@ -12,6 +12,7 @@ import MyOrders from "./pages/MyOrder/MyOrders";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Verify from "./pages/Verfiy/Verify";
 import "./index.css";
+import Restaurants from "./pages/Restaurants/Restaurants";
 
 
 export const App = () => {
@@ -26,11 +27,12 @@ export const App = () => {
           <div className="app-content">
             <ScrollToTop />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/myorders" element={<MyOrders/>} />
-              <Route path="/orders" element={<PlaceOrder />} />
-              <Route path="/verify" element={<Verify />} />
+              <Route path="/" element={<Home/>}/>
+              <Route path="/cart" element={<Cart/>}/>
+              <Route path="/myorders" element={<MyOrders/>}/>
+              <Route path="/restaurant/:id" element={<Restaurants/>}/>
+              <Route path="/orders" element={<PlaceOrder/>}/>
+              <Route path="/verify" element={<Verify/>}/>
             </Routes>
           </div>
         </div>
