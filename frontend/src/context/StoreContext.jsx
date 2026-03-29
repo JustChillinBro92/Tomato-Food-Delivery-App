@@ -64,15 +64,15 @@ const StoreContextProvider = (props) => {
     }
   };
 
-  const removeFromCart = async (itemId) => {
+  const removeFromCart = async (itemId, quantity) => {
     if (token) {
       setCartItems((prev) => {
         if (!prev.items[itemId]) return prev;
 
         const updatedItems = { ...prev.items };
 
-        if (updatedItems[itemId] > 1) {
-          updatedItems[itemId] -= 1; // decrease by 1
+        if (updatedItems[itemId] > quantity) {
+          updatedItems[itemId] -= quantity; // decrease by 1
         } else {
           delete updatedItems[itemId]; // remove if only 1
         }
@@ -85,7 +85,7 @@ const StoreContextProvider = (props) => {
       try {
         await axios.post(
           url + "/api/cart/remove",
-          { foodId: itemId },
+          { foodId: itemId, quantity: quantity },
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } catch (error) {
@@ -159,7 +159,19 @@ const StoreContextProvider = (props) => {
       }
     }
     loadData();
-  }, []);
+  }, []); 
+
+  // polling to update order status live
+  useEffect(() => {
+    if (!token) return;
+
+    const interval = setInterval(() => {
+      fetchOrder(token);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [token]);
+
 
   // useEffect(() => {
   //   console.log(cartItems);

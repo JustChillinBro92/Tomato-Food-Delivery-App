@@ -5,7 +5,7 @@ const authMiddleWare = async (req, res, next) => {
 
   if (!authHeader)
     return res.json({
-      success: false,
+      success: false, 
       message: "Token not found! Login Again",
     });
 

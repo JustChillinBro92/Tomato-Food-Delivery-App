@@ -17,11 +17,17 @@ import './Navbar.css'
 const Navbar = ({setShowLogin}) => {
   const navigate = useNavigate();
   const[menu, setMenu] = useState('home');
+  const[click, setClick] = useState(false);
+
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
 
   const handleSignIn = () => {
     setShowLogin(true);
     document.body.style.overflow = 'hidden';
+  }
+
+  const handleClick = () => {
+    setClick(!click);
   }
 
   const OnLogOut = () => {
@@ -48,15 +54,15 @@ const Navbar = ({setShowLogin}) => {
         <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
         <div className='navbar-cart-icon'>
           <Link to='/cart'><FontAwesomeIcon icon={faCartShopping}/></Link>
-          <div className={getTotalCartAmount()===0?'':'dot'}></div>
+          <div className={getTotalCartAmount() === 0 ? '' : 'dot'}></div>
         </div>
           {!token? ( 
             <button className='sign-in' onClick={handleSignIn}>Sign in</button>
           ) : ( 
-          <div className='nav-profile'>
+          <div className={click === true ? 'nav-profile-clicked' : 'nav-profile'} onClick={handleClick}>
             <FontAwesomeIcon icon={faCircleUser} className='nav-profile-icon'/>
             <ul className='nav-profile-dropdown'>
-              <li><Link to='/myorders'><FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>Orders</Link></li>
+              <li><Link to='/myorders'><FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>My Orders</Link></li>
               <li onClick={OnLogOut}><FontAwesomeIcon icon={faArrowRightToBracket} className='nav-icon'/>Logout</li>
             </ul>
           </div> 

@@ -21,7 +21,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 8%;
+    bottom: 19px;
     height: 30px;
     background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0));
     pointer-events: none;

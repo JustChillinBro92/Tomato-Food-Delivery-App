@@ -23,7 +23,7 @@ export const App = () => {
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className="page">
         <div className="app">
-        <Navbar setShowLogin={setShowLogin} />
+          <Navbar setShowLogin={setShowLogin}/>
           <div className="app-content">
             <ScrollToTop />
             <Routes>

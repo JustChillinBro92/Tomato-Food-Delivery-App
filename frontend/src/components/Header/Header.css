@@ -2,12 +2,10 @@
     height: 34vw;
     margin: 30px auto;
     background: url('../../assets/header_img.png') no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 .header-contents {
-    /* position: relative; */
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,9 +16,6 @@
     margin: 0 6%;
     transform: translateY(30%);
 
-
-    /* bottom: -25%;
-    left: 6vw; */
     animation: fadeIn 2s;
 }
 
@@ -74,12 +69,6 @@
 
     .header-contents button {
         padding: 2vw 3vw;
-    }
-}
-
-@media(max-width: 640px) {
-    .header {
-        height: 40vw;
     }
 }
 

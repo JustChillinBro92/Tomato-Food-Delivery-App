@@ -31,6 +31,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
     padding: 1rem; 
     background-color: rgba(255, 255, 255, 0.635);
     border-radius: 8px;
@@ -69,4 +70,18 @@
 
 .rest-food-list .food-item .food-item-img-container .food-item-img{
     width: 100%;
+}
+
+@media (max-width: 960px) {
+    .rest-container .rest-img-details {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .rest-container .rest-img-details .rest-img{
+        width: auto;
+        border-radius: 8px;
+        box-shadow: 10px 10px 4px #00000015;
+    }
 }

@@ -1,5 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { StoreContext } from "../../context/StoreContext";
 import "./MyOrders.css";
@@ -7,7 +8,7 @@ import "./MyOrders.css";
 const MyOrders = () => {
   const { url, orderData, token } = useContext(StoreContext);
   const navigate = useNavigate();
-
+  
   const formatOrderDate = (iso) => {
     const d = new Date(iso);
 
@@ -28,7 +29,35 @@ const MyOrders = () => {
     return `${month} ${day} ${year}, ${time}`;
   }
 
+  const viewRestaurant = (restaurantId) => {
+    navigate(`/restaurant/${restaurantId}`);
+  }
+
+  const cleanOrderData = (items) => {
+    const cleanData = items.map(item => ({
+      foodId: item._id,
+      quantity: item.quantity,
+    }))
+    return cleanData;
+  }
+
+  const reorder = async (foodItems, restaurantId) => {
+    const cartUpdate_response = await axios.post(
+      url + "/api/cart/update", 
+      { foodItems, restaurantId }, 
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    if(cartUpdate_response.data.success) {
+      navigate("/cart");
+      window.location.reload();  
+    } else {
+      console.log(cartUpdate_response.data.message);
+    }
+  }
+
   useEffect(() => {
+    //console.log(orderData);
     if (!token) {
       navigate("/");
     }
@@ -64,7 +93,8 @@ const MyOrders = () => {
                     <span className="status">{order.status}</span>
                   </p>
                 </div>
-                <button className="view-restaurant">
+                <button className="view-restaurant" 
+                  onClick={()=>viewRestaurant(order.restaurantId)}>
                   VIEW RESTAURANT
                 </button>
               </div>
@@ -90,7 +120,11 @@ const MyOrders = () => {
                 <div className="total">
                   Total: ${order.amount}.00
                 </div>
-                <button className="reorder">
+                <button className="reorder" 
+                onClick={()=> {
+                  const foodItems = cleanOrderData(order.items);
+                  reorder(foodItems, order.restaurantId);
+                }}>
                   REORDER
                 </button>
               </div>

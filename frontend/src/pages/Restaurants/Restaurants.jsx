@@ -56,7 +56,7 @@ const Restaurants = () => {
             </p>
           </span>
           <p>Location: {restaurant.location}</p>
-          <p>{restaurant.description}</p>
+          <p>"{restaurant.description}"</p>
         </div>
       </div>
 
@@ -95,10 +95,10 @@ const Restaurants = () => {
 
             <div className="food-item-info">
               <div className="food-item-name-rating">
-                <p>{name}</p>
+                <p>{item.name}</p>
                 <img src={assets.rating_starts} alt="" />
               </div>
-              <p className="food-item-desc">{item.description}</p>
+              <p className="food-item-desc">"{item.description}"</p>
               <p className="food-item-price">${item.price}</p>
             </div>
           </div>

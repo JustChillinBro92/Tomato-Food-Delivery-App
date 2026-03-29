@@ -58,8 +58,6 @@ const PlaceOrder = () => {
     } else {
       alert("Error!");
     }
-
-
   }
 
   const navigate = useNavigate();

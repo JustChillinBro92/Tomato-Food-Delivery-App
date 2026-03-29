@@ -41,7 +41,7 @@ const addToCart = async (req, res) => {
 const removeFromCart = async (req, res) => {
     try {
         const userId = req.userId;
-        const { foodId } = req.body;
+        const { foodId, quantity } = req.body;
 
         const userData = await userModel.findById(userId);
         if(!userData)
@@ -58,7 +58,7 @@ const removeFromCart = async (req, res) => {
         if(!items[foodId]) return res.json({ success: false, message: "Food does not exist!"})
 
         // if quant > 1 decrease by 1, if quant = 0 delete entry
-        if(items[foodId] > 1) items[foodId] -= 1;
+        if(items[foodId] > quantity ) items[foodId] -= quantity;
         else delete items[foodId];
 
         // after quant update if cart empty remove restaurantId, else mark modified
@@ -88,4 +88,36 @@ const getCart = async (req, res) => {
     }
 }
 
-export {addToCart, removeFromCart, getCart};
+// add multiple items to cart
+const updateCart = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const { foodItems, restaurantId } = req.body;
+
+        const userData = await userModel.findById(userId);
+        if(!userData)
+            return res.json({ success: false, message: "User not found!" });
+
+        const itemsObj = foodItems.reduce((acc, item) => {
+            acc[item.foodId] = item.quantity;
+            return acc;
+        },{})
+        if (Object.keys(itemsObj).length === 0) {
+            return res.json({ success: false, message: "No valid items!" });
+        }
+
+        // update cart with new data
+        userData.cartData = {
+            restaurantId: restaurantId,
+            items: itemsObj,
+        };
+
+        await userData.save();
+        res.json({success: true, message: "Updated cart!", cart: userData.cartData})
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Server Error!" })
+    }
+}
+
+export {addToCart, removeFromCart, getCart, updateCart};
