@@ -3,7 +3,9 @@ import logo from "./logo.png";
 import logo2 from "./logo2.png";
 import logo3 from "./logo3.png";
 import header_img from "./header_img.png";
+import hero_bg from "./hero-bg.png";
 import search_icon from "./search_icon.png";
+
 import menu_1 from "./menu_1.png";
 import menu_2 from "./menu_2.png";
 import menu_3 from "./menu_3.png";
@@ -12,6 +14,11 @@ import menu_5 from "./menu_5.png";
 import menu_6 from "./menu_6.png";
 import menu_7 from "./menu_7.png";
 import menu_8 from "./menu_8.png";
+
+import s1 from "./s1.png";
+import s2 from "./s2.png";
+import s3 from "./s3.png";
+import s4 from "./s4.png";
 
 import food_1 from "./food_1.png";
 import food_2 from "./food_2.png";
@@ -82,6 +89,7 @@ export const assets = {
   logo3,
   basket_icon,
   header_img,
+  hero_bg,
   search_icon,
   rating_starts,
   add_icon_green,
@@ -233,6 +241,10 @@ export const menu_list = [
     menu_name: "Noodles",
     menu_image: menu_8,
   },
+];
+
+export const slider_list = [
+  s1, s2, s3, s4, s1, s2, s3, s4
 ];
 
 export const food_list = [

@@ -12,17 +12,17 @@ const FoodItem = ({item_id, image, name, description, price, restaurant_id}) => 
     <div className='food-item' id='food-item'>
         <div className='food-item-img-container'>
             <img src={url+"/images/food/"+image} alt="" className='food-item-img'/>
-                {   
-                    !cartItems.items[item_id] ?
-                    <div className='add-to-cart' onClick={()=> addToCart(restaurant_id._id, item_id)}><p>ADD</p></div> : 
-                    <div className='food-item-counter-container'>
-                        <div className='food-item-counter'>
-                            <FontAwesomeIcon icon={faMinus} className='cart-operation-icon' onClick={()=> removeFromCart(item_id)}/>
-                            {cartItems.items[item_id]}
-                            <FontAwesomeIcon icon={faPlus} className='cart-operation-icon' onClick={()=> addToCart(restaurant_id._id, item_id)}/>
-                        </div>
+            {   
+                !cartItems.items[item_id] ?
+                <div className='add-to-cart' onClick={()=> addToCart(restaurant_id._id, item_id)}><p>ADD</p></div> : 
+                <div className='food-item-counter-container'>
+                    <div className='food-item-counter'>
+                        <FontAwesomeIcon icon={faMinus} className='cart-operation-icon' onClick={()=> removeFromCart(item_id)}/>
+                        {cartItems.items[item_id]}
+                        <FontAwesomeIcon icon={faPlus} className='cart-operation-icon' onClick={()=> addToCart(restaurant_id._id, item_id)}/>
                     </div>
-                }
+                </div>
+            }
         </div>
 
         <div className='food-item-info'>

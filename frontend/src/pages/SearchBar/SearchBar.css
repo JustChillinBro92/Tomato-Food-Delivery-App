@@ -1,0 +1,139 @@
+.search-landing {
+    height: 80vw;
+    margin: 30px auto;
+    background: url('../../assets/hero-bg.png') no-repeat;
+    background-size: contain;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.search-landing .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    margin-top: 13vw;
+    text-align: center;
+    animation: fadeIn 1s;
+}
+
+.search-landing .hero h2 {
+    color: white;
+    font-size: max(4vw, 22px);
+}
+.search-landing .hero p {
+    font-weight: 500;
+    font-size: 1.8vw;
+}
+
+.search-landing .hero .filter-by {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.search-landing .hero .filter-by button {
+    padding: 1vw 1.3vw;
+    background-color: white;
+    color: #747474;
+    font-weight: 500;
+    font-size: max(1vw, 13px);
+    width: min(13vw, 200px);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-landing .hero .filter-by button:hover {
+    background-color: black;
+    color: white;
+}
+
+.scroll-food {
+    animation: fadeIn 1s;
+}
+
+.scroll-food .slider {
+    width: 80%;
+    margin: auto;
+}
+
+.scroll-food .slider .slider-item-container {
+    padding: 45px 0 0 0;
+}
+
+.scroll-food .slider .slider-item-container img {
+    width: 100%;
+    border: 8px solid #1a1a19;
+    border-radius: 100%;
+}
+
+.slick-slide {
+  padding: 0 10px 0 10px;
+  transition: 0.3s;
+}
+
+.slick-active {
+  transform: translateY(0px);
+}
+
+.slick-active + .slick-active {
+  transform: translateY(-45px);
+}
+
+.slick-active + .slick-active + .slick-active {
+  transform: translateY(-45px);
+}
+
+.slick-active + .slick-active + .slick-active + .slick-active {
+  transform: translateY(0px);
+}
+
+@media(max-width: 991px) {
+    .slick-active {
+        transform: translateY(0px);
+    }
+
+    .slick-active + .slick-active {
+        transform: translateY(-45px);
+    }
+
+    .slick-active + .slick-active + .slick-active {
+        transform: translateY(0px);
+    }
+}
+
+@media(max-width: 577px) {
+    .search-landing .hero .filter-by button {
+        padding: 1vw 1.3vw;
+        font-size: max(1vw, 10px);
+
+    }
+    .slick-active {
+        transform: translateY(-45px);
+    }
+
+    .slick-active + .slick-active {
+        transform: translateY(0px);
+    }
+}
+
+
+@media(max-width: 364px) {
+    .search-landing {
+        gap: 2rem;
+    }   
+
+    .scroll-food .slider .slider-item-container img {
+        width: 60%;
+        margin: auto;
+        border: 7px solid #1a1a19;
+        border-radius: 100%;
+    }
+
+}

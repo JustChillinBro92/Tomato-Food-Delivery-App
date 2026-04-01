@@ -10,7 +10,6 @@ import './Home.css'
 
 const Home = () => {
   const [category, setCategory] = useState("All");
-
   const location = useLocation();
 
   useEffect(() => {

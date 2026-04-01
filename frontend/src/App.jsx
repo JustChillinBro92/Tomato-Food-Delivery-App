@@ -11,19 +11,24 @@ import Cart from "./pages/Cart/Cart";
 import MyOrders from "./pages/MyOrder/MyOrders";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Verify from "./pages/Verfiy/Verify";
-import "./index.css";
 import Restaurants from "./pages/Restaurants/Restaurants";
+import SearchBar from "./pages/SearchBar/SearchBar";
 
+import "./index.css";
 
 export const App = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const [searchFood, setSearchFood] = useState("");
 
   return (
     <>
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className="page">
         <div className="app">
-          <Navbar setShowLogin={setShowLogin}/>
+          <Navbar 
+            setShowLogin={setShowLogin} 
+            setSearchFood={setSearchFood}
+          />
           <div className="app-content">
             <ScrollToTop />
             <Routes>
@@ -33,10 +38,16 @@ export const App = () => {
               <Route path="/restaurant/:id" element={<Restaurants/>}/>
               <Route path="/orders" element={<PlaceOrder/>}/>
               <Route path="/verify" element={<Verify/>}/>
+              <Route path="/search" element={
+                <SearchBar
+                  searchFood={searchFood} 
+                  setSearchFood={setSearchFood}
+                />}
+              />
             </Routes>
           </div>
         </div>
-        <Footer />
+        <Footer/>
       </div>
     </>
   );

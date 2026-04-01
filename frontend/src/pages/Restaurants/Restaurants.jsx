@@ -80,7 +80,7 @@ const Restaurants = () => {
                     <FontAwesomeIcon
                       icon={faMinus}
                       className="cart-operation-icon"
-                      onClick={() => removeFromCart(item._id)}
+                      onClick={() => removeFromCart(item._id, 1)}
                     />
                     {cartItems.items[item._id]}
                     <FontAwesomeIcon
