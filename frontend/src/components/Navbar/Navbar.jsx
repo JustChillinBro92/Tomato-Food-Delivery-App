@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
@@ -17,6 +17,8 @@ import './Navbar.css'
 
 const Navbar = ({setShowLogin, setSearchFood}) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const[menu, setMenu] = useState('home');
   const[searchClick, setSearchClick] = useState(false);
   const[profileClick, setProfileClick] = useState(false);
@@ -56,6 +58,11 @@ const Navbar = ({setShowLogin, setSearchFood}) => {
     }
   }
 
+  useEffect(() => {
+    if(location.pathname != "/search")
+      setSearchClick(false);
+  },[location.pathname]);
+
   return (
     <div className='navbar'>
       <Link to='/'>
@@ -63,33 +70,27 @@ const Navbar = ({setShowLogin, setSearchFood}) => {
         onClick={()=>handleClick("logo")}/>
       </Link>
       
-      {!searchClick ? (
+      {!searchClick && (
         <ul className='navbar-menu'>
           <Link to='/' onClick={()=>setMenu('home')} className={menu==='home'?'active':''}>Home</Link>
           <Link to="/#restaurant-display" onClick={()=>setMenu('restaurants')} className={menu==='restaurants'?'active':''}>Restaurants</Link>
           <a href='#' onClick={()=>setMenu('mobile-app')} className={menu==='mobile-app'?'active':''}>Mobile-App</a>
           <a href='#footer' onClick={()=>setMenu('contact-us')} className={menu==='contact-us'?'active':''}>Contact Us</a>
-        </ul>
-        ) : (
-          <div className='searchBar'>
-            <input type="text" placeholder='Search for food...'
-            value={foodParam} onChange={onChangeHandler}/>
-            <button onClick={handleSearch}>Search</button>
-          </div>
-        )}
-
+        </ul>  
+      )}
+      {searchClick && location.pathname === "/search" && (
+        <div className='searchBar'>
+          <input type="text" placeholder='Search for food...'
+          value={foodParam} onChange={onChangeHandler}/>
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      )}
 
       <div className='navbar-right'>
         <Link to='/search'>
-          {!searchClick ? (
-            <FontAwesomeIcon className='search-icon' 
-            icon={faMagnifyingGlass} 
-            onClick={()=>handleClick("search")}/>
-          ) : (
-            <FontAwesomeIcon className='search-icon' 
-            icon={faCircleXmark} 
-            onClick={()=>handleClick("search")}/>
-          )}
+          <FontAwesomeIcon className='search-icon' 
+          icon={faMagnifyingGlass} 
+          onClick={()=>handleClick("search")}/>
         </Link>
 
         <div className='navbar-cart-icon'>
@@ -97,17 +98,28 @@ const Navbar = ({setShowLogin, setSearchFood}) => {
           <div className={getTotalCartAmount() === 0 ? '' : 'dot'}></div>
         </div>
 
-          {!token ? ( 
-            <button className='sign-in' onClick={handleSignIn}>Sign in</button>
-          ) : ( 
-          <div className={profileClick === true ? 'nav-profile-clicked' : 'nav-profile'} onClick={()=>handleClick("profile")}>
+
+        {!token && location.pathname !== "/search" && (
+          <button className='sign-in' onClick={handleSignIn}>Sign in</button>
+        )}
+        {token && location.pathname !== "/search" && (
+          <div className={profileClick ? 'nav-profile-clicked' : 'nav-profile'} onClick={() => handleClick("profile")}>
             <FontAwesomeIcon icon={faCircleUser} className='nav-profile-icon'/>
             <ul className='nav-profile-dropdown'>
-              <li><Link to='/myorders'><FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>My Orders</Link></li>
-              <li onClick={OnLogOut}><FontAwesomeIcon icon={faArrowRightToBracket} className='nav-icon'/>Logout</li>
+              <li>
+                <Link to='/myorders'>
+                  <FontAwesomeIcon icon={faBasketShopping} className='nav-icon'/>
+                  My Orders
+                </Link>
+              </li>
+              <li onClick={OnLogOut}>
+                <FontAwesomeIcon icon={faArrowRightToBracket} className='nav-icon'/>
+                Logout
+              </li>
             </ul>
-          </div> 
-          )}
+          </div>
+        )}
+
       </div>
     </div>
   )

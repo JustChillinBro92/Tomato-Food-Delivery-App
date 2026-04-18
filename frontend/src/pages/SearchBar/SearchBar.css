@@ -22,11 +22,11 @@
 
 .search-landing .hero h2 {
     color: white;
-    font-size: max(4vw, 22px);
+    font-size: max(4vw, 20px);
 }
 .search-landing .hero p {
     font-weight: 500;
-    font-size: 1.8vw;
+    font-size: max(1.8vw, 10px);
 }
 
 .search-landing .hero .filter-by {
@@ -41,8 +41,8 @@
     background-color: white;
     color: #747474;
     font-weight: 500;
-    font-size: max(1vw, 13px);
-    width: min(13vw, 200px);
+    font-size: max(1vw, 10px);
+    width: max(12vw, 70px);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -73,10 +73,12 @@
     border-radius: 100%;
 }
 
+
 .slick-slide {
   padding: 0 10px 0 10px;
   transition: 0.3s;
 }
+
 
 .slick-active {
   transform: translateY(0px);
@@ -109,11 +111,6 @@
 }
 
 @media(max-width: 577px) {
-    .search-landing .hero .filter-by button {
-        padding: 1vw 1.3vw;
-        font-size: max(1vw, 10px);
-
-    }
     .slick-active {
         transform: translateY(-45px);
     }
@@ -121,8 +118,11 @@
     .slick-active + .slick-active {
         transform: translateY(0px);
     }
-}
 
+    .search-landing .hero .filter-by button {
+        border-radius: 4px;
+    }
+}
 
 @media(max-width: 364px) {
     .search-landing {

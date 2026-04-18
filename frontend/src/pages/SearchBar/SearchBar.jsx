@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Slider from "react-slick";
@@ -41,13 +41,6 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
         },
       },
       {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
         breakpoint: 576,
         settings: {
           slidesToShow: 2,
@@ -65,7 +58,7 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
   };
 
   // useEffect(() => {
-  //     console.log(filteredData);
+  //   console.log(filteredData);
   // },[])
 
   return (
@@ -150,7 +143,7 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
             <p>Good food is always prepping in the meantime</p>
             <div className="filter-by">
               <button>Restaurant</button>
-              <button>Food</button>
+              <button>Dishes</button>
             </div>
           </div>
 

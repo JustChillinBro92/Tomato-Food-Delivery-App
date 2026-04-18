@@ -33,10 +33,9 @@
     border-radius: 5px;
     border: 2px solid black;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     width: 100%;
 }
-
 
 .navbar-menu a {
     position: relative;
@@ -63,6 +62,12 @@
     font-size: 1.2rem;
     gap: 30px;
     color: #49557e;
+}
+
+.navbar-right .hamburger {
+    display: none;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .navbar-right .search-icon {
@@ -102,7 +107,7 @@
 
 .searchBar button{
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     background-color: black;
     color: white;
     border: none;
@@ -162,7 +167,7 @@
 }
 
 
-@media(max-width: 1050px) {
+@media(max-width: 1220px) {
     .navbar .logo {
         width: 180px;
     }
@@ -175,10 +180,11 @@
 
     .navbar-right {
         gap: 15px;
+        font-size: 16px;
     }
 
-    .navbar-right {
-        font-size: 16px;
+    .navbar-right .search-icon {
+        font-size: 1.1rem;
     }
 
     .navbar-right button {
@@ -190,6 +196,14 @@
     .nav-profile-icon {
         font-size: 21px;
         cursor: pointer;
+    }
+
+    .nav-profile-dropdown {
+        top: 4.5rem;
+    }
+
+    .searchBar {
+        width: 45%;
     }
 }
 
@@ -217,32 +231,95 @@
         text-wrap: nowrap;
         padding: 12px 20px;
     }
+
+    .nav-profile-clicked .nav-profile-dropdown {
+        width: 165px;
+        padding: 16px 20px;
+    }
+
+    .nav-profile-dropdown li, .nav-profile-dropdown li a {
+        font-size: 15px;
+    }
 }
 
-@media(max-width: 750px) {
+@media(max-width: 810px) {
     .navbar-menu{
         display: none;
+    }
+
+    .searchBar {
+        display: flex;
+        width: 50%;
+    }
+
+    .searchBar input{
+        font-size: 0.7rem;
+        width: 100%;
+    }
+
+    .searchBar button{
+        font-size: 0.7rem;
+    }
+}
+
+@media(max-width: 640px) {
+    .nav-profile-dropdown {
+        top: 5rem;
+        right: 5%;
     }
 }
 
 @media (max-width: 480px) {
     .navbar .logo {
-        width: 140px;
+        width: 120px;
     }
 
     .nav-profile-icon {
         font-size: 20px;
         cursor: pointer;
     }
+
+    .nav-profile-dropdown {
+        top: 3.5rem;
+    }
+
+    .nav-profile-clicked .nav-profile-dropdown {
+        width: 140px;
+        padding: 16px 15px;
+    }
+
+    .nav-profile-dropdown li, .nav-profile-dropdown li a {
+        font-size: 13.5px;
+    }
+
+    .searchBar input{
+        padding: 10px;
+        font-size: 0.6rem;
+        width: 100%;
+    }
+
+    .searchBar button{
+        font-size: 0.6rem;
+        width: 27%;
+        padding: 0 20px 0 12px;
+    }
+}
+
+@media (max-width: 455px) {
+    .navbar .logo {
+        width: 110px;
+    }
+
+    .searchBar button{
+        width: 30%;
+    }
 }
 
 @media (max-width: 376px) {
     .navbar .logo {
-        width: 130px;
+        width: 90px;
     }
-}
 
-@media (max-width: 365px) {
     .navbar-right {
         font-size: 13px;
     }
@@ -250,6 +327,10 @@
     .navbar-right button {
         font-size: 13px;
         padding: 12px 20px;
+    }
+
+    .searchBar button{
+        width: 32%;
     }
 }
 
