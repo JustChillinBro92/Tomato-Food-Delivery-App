@@ -15,14 +15,16 @@ import {assets} from '../../assets/assets.js'
 import { StoreContext } from '../../context/StoreContext.jsx'
 import './Navbar.css'
 
-const Navbar = ({setShowLogin, setSearchFood}) => {
+const Navbar = ({setShowLogin, setSearchFood, setSearchRestaurant, dishClicked}) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const[menu, setMenu] = useState('home');
   const[searchClick, setSearchClick] = useState(false);
   const[profileClick, setProfileClick] = useState(false);
+
   const [foodParam, setFoodParam] = useState("");
+  const [restaurantParam, setRestaurantParam] = useState("");
 
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
 
@@ -36,14 +38,22 @@ const Navbar = ({setShowLogin, setSearchFood}) => {
     navigate("/");
     window.location.reload();
   }
-  const onChangeHandler = (event) => {
+
+  const onFoodChangeHandler = (event) => {
     const food = event.target.value;
     setFoodParam(food);
   }
-  const handleSearch = () => {
-    setSearchFood(foodParam);
+  const onRestChangeHandler = (event) => {
+    const restaurant = event.target.value;
+    setRestaurantParam(restaurant);
   }
 
+  const handleSearch = (param) => {
+    if(param === "dish")
+      setSearchFood(foodParam);
+    else 
+      setSearchRestaurant(restaurantParam);
+  }
   const handleClick = (category) => {
     switch(category) {
       case "logo":
@@ -80,9 +90,19 @@ const Navbar = ({setShowLogin, setSearchFood}) => {
       )}
       {searchClick && location.pathname === "/search" && (
         <div className='searchBar'>
-          <input type="text" placeholder='Search for food...'
-          value={foodParam} onChange={onChangeHandler}/>
-          <button onClick={handleSearch}>Search</button>
+          {dishClicked ? (
+            <>
+              <input type="text" placeholder='Search for food...'
+              value={foodParam} onChange={onFoodChangeHandler}/>
+              <button onClick={()=>handleSearch("dish")}>Search</button>
+            </>
+          ) : (
+            <>
+              <input type="text" placeholder='Search for restaurant...'
+              value={restaurantParam} onChange={onRestChangeHandler}/>
+              <button onClick={()=>handleSearch("restaurant")}>Search</button>
+            </>
+          )}
         </div>
       )}
 
@@ -97,7 +117,6 @@ const Navbar = ({setShowLogin, setSearchFood}) => {
           <Link to='/cart'><FontAwesomeIcon icon={faCartShopping}/></Link>
           <div className={getTotalCartAmount() === 0 ? '' : 'dot'}></div>
         </div>
-
 
         {!token && location.pathname !== "/search" && (
           <button className='sign-in' onClick={handleSignIn}>Sign in</button>

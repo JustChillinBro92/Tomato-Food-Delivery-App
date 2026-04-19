@@ -18,7 +18,10 @@ import "./index.css";
 
 export const App = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const [dishClicked, setDishClicked] = useState(true);
+
   const [searchFood, setSearchFood] = useState("");
+  const [searchRestaurant, setSearchRestaurant] = useState("");
 
   return (
     <>
@@ -26,8 +29,10 @@ export const App = () => {
       <div className="page">
         <div className="app">
           <Navbar 
-            setShowLogin={setShowLogin} 
+            setShowLogin={setShowLogin}
+            dishClicked={dishClicked}
             setSearchFood={setSearchFood}
+            setSearchRestaurant={setSearchRestaurant}
           />
           <div className="app-content">
             <ScrollToTop />
@@ -40,8 +45,10 @@ export const App = () => {
               <Route path="/verify" element={<Verify/>}/>
               <Route path="/search" element={
                 <SearchBar
+                  dishClicked={dishClicked}
+                  setDishClicked={setDishClicked}
                   searchFood={searchFood} 
-                  setSearchFood={setSearchFood}
+                  searchRestaurant={searchRestaurant}
                 />}
               />
             </Routes>

@@ -1,4 +1,6 @@
-import { useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import Slider from "react-slick";
@@ -10,14 +12,33 @@ import "slick-carousel/slick/slick-theme.css";
 import { assets, slider_list } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 
-const SearchBar = ({ searchFood, setSearchFood }) => {
-  const { food_list, cartItems, addToCart, removeFromCart, url } =
-    useContext(StoreContext);
+const SearchBar = ({
+  dishClicked, setDishClicked,
+  searchFood, searchRestaurant,
+}) => {
+  const { 
+    food_list, restaurant_list, cartItems, 
+    addToCart, removeFromCart, url 
+  } = useContext(StoreContext);
 
-  const filteredData = food_list.filter((item) =>
+  const handleClick = (param) => {
+    if(param !== "dish")
+      setDishClicked(false);
+    else
+      setDishClicked(true);
+  }
+
+  const navigate = useNavigate();
+  const handleRestClick = (restaurantId) => {
+    navigate(`/restaurant/${restaurantId}`);
+  }
+
+  const filteredFoodData = food_list.filter((item) =>
     item.name.toLowerCase().includes(searchFood?.toLowerCase()),
   );
-
+  const filteredRestData = restaurant_list.filter((item) =>
+    item.name.toLowerCase().includes(searchRestaurant?.toLowerCase()),
+  );
 
   const sliderSettings = {
     autoplay: true,
@@ -27,7 +48,7 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
     slidesToScroll: 1,
     pauseOnHover: false,
     centerMode: true,
-    centerPadding: "0px", 
+    centerPadding: "0px",
     infinite: true,
     arrows: false,
 
@@ -58,17 +79,18 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
   };
 
   // useEffect(() => {
-  //   console.log(filteredData);
+  //   console.log(filteredFoodData);
   // },[])
 
   return (
     <>
-      {searchFood != "" ? (
-        filteredData.length > 0 ? (
+      {searchFood != "" || searchRestaurant != "" ? (
+        dishClicked && filteredFoodData.length > 0 ? (
+          // when searched for food
           <div className="rest-container">
             <h2>Dishes you can choose from</h2>
             <div className="rest-food-list">
-              {filteredData.map((item, foodIndex) => (
+              {filteredFoodData.map((item, foodIndex) => (
                 <div className="food-item" id="foodIndex" key={foodIndex}>
                   <div className="food-item-img-container">
                     <img
@@ -121,6 +143,35 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
               ))}
             </div>
           </div>
+        ) : !dishClicked && filteredRestData.length > 0 ? (
+          // when searched for restaurant
+          <div className='rest-container'>
+            <h2>Restaurants you can order from</h2>
+            <div className="rest-food-list">
+              {filteredRestData.map((item, restIndex) => (
+                <div className='restaurant-item' id='restaurant-item' key={restIndex}
+                  onClick={()=>handleRestClick(item._id)}>
+                  <div className='restaurant-item-img-container'>
+                      <img src={url+"/images/restaurant/" + item.image} className="restaurant-item-img" />
+                      <div className='restaurant-item-name'>
+                        <p>{item.name}</p>
+                      </div>
+                  </div>
+
+                  <div className='restaurant-item-info'>
+                    <div className='restaurant-item-cuisine-rating'>
+                      <p>{item.cuisine}</p>
+                      <div className='restaurant-item-rating'>
+                        <p>{item.rating}</p>
+                        <img src={assets.rating_starts} alt="" />
+                      </div>
+                    </div>
+                    <p className='restaurant-item-location'>{item.location}</p>
+                  </div>
+                </div>              
+              ))}
+            </div>
+          </div>
         ) : (
           <div className="food-not-found cart">
             <div className="empty-cart">
@@ -131,29 +182,35 @@ const SearchBar = ({ searchFood, setSearchFood }) => {
                   Looks like we couldn't find what you searched for. Delicious
                   Food is getting prepped as we speak!
                 </p>
-                <button onClick={() => setSearchFood("")}>Refresh</button>
+                <button onClick={()=>window.location.reload()}>Refresh</button>
               </div>
             </div>
           </div>
         )
       ) : (
-        <div className="search-landing">            
+        <div className="search-landing">
           <div className="hero">
             <h2>Discover Restaurnats And Foods</h2>
             <p>Good food is always prepping in the meantime</p>
             <div className="filter-by">
-              <button>Restaurant</button>
-              <button>Dishes</button>
+              <button className={!dishClicked ? "active" : ""}
+                onClick={()=>handleClick("restaurant")}>
+                Restaurant
+              </button>
+              <button className={dishClicked ? "active" : ""}
+                onClick={()=>handleClick("dish")}>
+                Dishes
+              </button>
             </div>
           </div>
 
           <div className="scroll-food">
-            <Slider {...sliderSettings} className='slider'>
-                {slider_list.map((img, index)=> (
-                    <div className='slider-item-container' key={index}>
-                        <img src={img} alt="" />
-                    </div>
-                ))}
+            <Slider {...sliderSettings} className="slider">
+              {slider_list.map((img, index) => (
+                <div className="slider-item-container" key={index}>
+                  <img src={img} alt="" />
+                </div>
+              ))}
             </Slider>
           </div>
         </div>

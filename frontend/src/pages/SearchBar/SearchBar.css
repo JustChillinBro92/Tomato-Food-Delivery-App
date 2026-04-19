@@ -54,6 +54,11 @@
     color: white;
 }
 
+.search-landing .hero .filter-by .active {
+    background-color: black;
+    color: white;
+}
+
 .scroll-food {
     animation: fadeIn 1s;
 }
