@@ -2,9 +2,10 @@
 
 A modern, full-stack food delivery application built with the MERN stack (MongoDB, Express, React, Node.js).
 
-![JavaScript](https://img.shields.io/badge/JavaScript-71.9%25-F7DF1E?style=flat-square) 
-![CSS](https://img.shields.io/badge/CSS-27.6%25-1572B6?style=flat-square) 
-![HTML](https://img.shields.io/badge/HTML-0.5%25-E34C26?style=flat-square)
+![JavaScript](https://img.shields.io/badge/JavaScript-95.3%25-yellow)
+![HTML](https://img.shields.io/badge/HTML-4.7%25-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Electron](https://img.shields.io/badge/Built%20with-Electron-47848F)
 
 ## ✨ Features
 
