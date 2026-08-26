@@ -1,4 +1,4 @@
-# 🍅 Tomato Food Delivery App
+# Tomato - Food Delivery App
 
 A modern, full-stack food delivery application built with the MERN stack (MongoDB, Express, React, Node.js).
 
